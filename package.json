@@ -2,12 +2,12 @@
 {
   "name": "wcommunicator",
   "version": "0.3.0",
-  "description": "",
+  "description": "Strategy for two points communication",
   "author": "Kostiantyn Wandalen <wtory.net@domainsbyproxy.com>",
   "license": "MIT",
-  "main": "staging/dwtools/amid/",
+  "main": "staging/dwtools/amid/communicator/Communicator.s",
   "files": [
-    "staging/dwtools/amid",
+    "staging/dwtools/amid/communicator",
     "production"
   ],
   "scripts": {

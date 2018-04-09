@@ -1,5 +1,5 @@
 
-# wPackage [![Build Status](https://travis-ci.org/Wandalen/wPackage.svg?branch=master)](https://travis-ci.org/Wandalen/wPackage)
+# wCommunicator [![Build Status](https://travis-ci.org/Wandalen/wCommunicator.svg?branch=master)](https://travis-ci.org/Wandalen/wCommunicator)
 
-To Do.
+Strategy for two points communication.
 
