@@ -1,7 +1,6 @@
-
 {
   "name": "wcommunicator",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Strategy for two points communication",
   "author": "Kostiantyn Wandalen <wtory.net@domainsbyproxy.com>",
   "license": "MIT",
