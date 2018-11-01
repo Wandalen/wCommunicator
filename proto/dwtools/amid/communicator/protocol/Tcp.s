@@ -39,12 +39,7 @@ var _ = _global_.wTools;
 var Parent = _.CommunicatorProtocol.Abstract;
 var Self = function wCommunicatorProtocolTcp( o )
 {
-  if( !( this instanceof Self ) )
-  if( _.typeOf( o ) === Self )
-  return o;
-  else
-  return new( _.routineJoin( Self, Self, arguments ) );
-  return Self.prototype.init.apply( this,arguments );
+  return _.instanceConstructor( Self, this, arguments );
 }
 
 Self.shortName = 'tcp';

@@ -45,12 +45,7 @@ var _ = _global_.wTools;
 var Parent = null;
 var Self = function wCommunicator( o )
 {
-  if( !( this instanceof Self ) )
-  if( _.typeOf( o ) === Self )
-  return o;
-  else
-  return new( _.routineJoin( Self, Self, arguments ) );
-  return Self.prototype.init.apply( this,arguments );
+  return _.instanceConstructor( Self, this, arguments );
 }
 
 Self.shortName = 'Communicator';
@@ -708,7 +703,7 @@ var Proto =
 
   // relations
 
-  
+
   Composes : Composes,
   Aggregates : Aggregates,
   Associates : Associates,
