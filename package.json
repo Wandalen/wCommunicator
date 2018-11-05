@@ -7,7 +7,7 @@
   "main": "proto/dwtools/amid/communicator/Communicator.s",
   "files": [
     "proto/dwtools/amid/communicator",
-    "production"
+    "proto/dwtools/Tools.s", "production"
   ],
   "scripts": {
     "test": "wtest staging",
