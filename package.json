@@ -4,14 +4,14 @@
   "description": "Sketch. Strategy for two points communication. Communicator abstracts details of implementation of communication protocol and provides smooth experience though uniform API. Use the module to make your application more portable and less platform/environment dependent.",
   "author": "Kostiantyn Wandalen <wanalen@willbe.so>",
   "license": "MIT",
-  "main": "staging/dwtools/amid/communicator/Communicator.s",
+  "main": "proto/dwtools/amid/communicator/Communicator.s",
   "files": [
-    "staging/dwtools/amid/communicator",
+    "proto/dwtools/amid/communicator",
     "production"
   ],
   "scripts": {
     "test": "wtest staging",
-    "make_doc": "./doc.sh"
+    "docgen": "wdocgen proto"
   },
   "repository": {
     "type": "git",
