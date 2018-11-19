@@ -73,7 +73,7 @@ function trivial( test )
   master.packetSend( _.strDup( 'from master c',1 << bits ) );
   master.packetSend( null );
 
-  master.on( 'terminateReceived', () => con.give() );
+  master.on( 'terminateReceived', () => con.give( null ) );
   master.on( 'message', function( e )
   {
     test.identical( e.data,expectedByMaster[ 0 ] );
@@ -109,7 +109,7 @@ function trivial( test )
     slave.on( 'terminateReceived', function()
     {
       if( typeof con !== 'undefined' )
-      con.give();
+      con.give( null );
     });
 
     slave.on( 'message', function( e )
@@ -199,11 +199,11 @@ function buffer( test )
   {
     logger.log( master.nameTitle, 'terminateReceived' );
     debugger;
-    con.give();
+    con.give( null );
   });
 
   master
-  .on( 'terminateReceived', () => con.give() )
+  .on( 'terminateReceived', () => con.give( null ) )
   .on( 'message', function( e )
   {
     test.identical( e.data , expectedPacketsByMaster[ 0 ] );
@@ -244,7 +244,7 @@ function buffer( test )
   {
     logger.log( slave.nameTitle, 'terminateReceived' );
     debugger;
-    con.give();
+    con.give( null );
   })
   .on( 'packetSpecial', function( e )
   {

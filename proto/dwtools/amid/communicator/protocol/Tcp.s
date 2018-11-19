@@ -112,7 +112,7 @@ function _formMaster()
     self.primeStreamLike = socket;
     self._formStreams();
 
-    self._conConnect.give();
+    self._conConnect.give( null );
   });
 
   var port = com.portGet();
@@ -164,7 +164,7 @@ function _formSlave()
 
   stream.connect( port,host, function()
   {
-    con.give();
+    con.give( null );
   });
 
   self._formStreams();
