@@ -184,7 +184,7 @@ reflector:
       ./dwtools/amid/communicator.test/Tcp.test.s: true
     srcFilter:
       basePath: ./proto
-      prefixPath: proto
+      prefixPath: .
     dstFilter:
       basePath: .
       prefixPath: .

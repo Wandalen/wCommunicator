@@ -117,7 +117,7 @@ function _formMaster()
   //
   // var port = com.portGet();
   // var host = com.hostGet();
-  // _.assert( port,'expects port, but got',_.strTypeOf( port ) );
+  // _.assert( port,'expects port, but got',_.strType( port ) );
   //
   // try
   // {
@@ -159,7 +159,7 @@ function _formSlave()
   // var port = com.portGet();
   // var host = com.hostGet();
   //
-  // _.assert( port,'expects port, but got',_.strTypeOf( port ) );
+  // _.assert( port,'expects port, but got',_.strType( port ) );
   //
   // // logger.log( 'host',host );
   // // logger.log( 'port',port );
