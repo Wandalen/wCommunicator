@@ -183,8 +183,8 @@ reflector:
       ./dwtools/amid/communicator.test/BrowserWorker.test.s: true
       ./dwtools/amid/communicator.test/Tcp.test.s: true
     srcFilter:
-      basePath: ./proto
-      prefixPath: .
+      basePath: .
+      prefixPath: proto
     dstFilter:
       basePath: .
       prefixPath: .
