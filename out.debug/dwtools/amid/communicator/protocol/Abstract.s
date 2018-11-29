@@ -27,7 +27,8 @@ if( typeof module !== 'undefined' )
   _.include( 'wConsequence' );
   _.include( 'wCopyable' );
   _.include( 'wCommunicator' );
-  _.include( 'wBaseEncoder' );
+  // _.include( 'wBaseEncoder' );
+  require( '../../../abase/l4/Encoder.s' )
 
 }
 
