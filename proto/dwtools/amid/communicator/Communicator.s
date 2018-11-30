@@ -13,7 +13,7 @@
 if( typeof module !== 'undefined' )
 {
 
-  let _ = require( '../../../Tools.s' );
+  let _ = require( '../../Tools.s' );
 
   _.include( 'wCopyable' );
   _.include( 'wEventHandler' );
