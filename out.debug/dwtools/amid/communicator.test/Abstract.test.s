@@ -33,9 +33,9 @@ function trivial( test )
 
   /* */
 
-  var con = new _.Consequence().choke( 1 );
+  var con = new _.Consequence().done( 1 );
 
-  con.doThen( function( err,arg )
+  con.finally( function( err,arg )
   {
     test.identical( master.errors.length, 0 );
     test.identical( slave.errors.length, 0 );
@@ -56,7 +56,7 @@ function trivial( test )
   master.packetSend( _.strDup( 'from master c',1 << bits ) );
   master.packetSend( null );
 
-  master.on( 'terminateReceived', () => con.give( null ) );
+  master.on( 'terminateReceived', () => con.take( null ) );
   master.on( 'message', function( e )
   {
     test.identical( e.data,expectedByMaster[ 0 ] );
@@ -92,7 +92,7 @@ function trivial( test )
     slave.on( 'terminateReceived', function()
     {
       if( typeof con !== 'undefined' )
-      con.give( null );
+      con.take( null );
     });
 
     slave.on( 'message', function( e )
@@ -132,9 +132,9 @@ function buffer( test )
 
   /* */
 
-  var con = new _.Consequence().choke( 1 );
+  var con = new _.Consequence().done( 1 );
 
-  con.doThen( function( err,arg )
+  con.finally( function( err,arg )
   {
     test.identical( expectedPacketsByMaster.length, 0 );
     test.identical( expectedBuffersByMaster.length, 0 );
@@ -182,11 +182,11 @@ function buffer( test )
   {
     logger.log( master.nameTitle, 'terminateReceived' );
     debugger;
-    con.give( null );
+    con.take( null );
   });
 
   master
-  .on( 'terminateReceived', () => con.give( null ) )
+  .on( 'terminateReceived', () => con.take( null ) )
   .on( 'message', function( e )
   {
     test.identical( e.data , expectedPacketsByMaster[ 0 ] );
@@ -227,7 +227,7 @@ function buffer( test )
   {
     logger.log( slave.nameTitle, 'terminateReceived' );
     debugger;
-    con.give( null );
+    con.take( null );
   })
   .on( 'packetSpecial', function( e )
   {

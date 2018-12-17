@@ -282,7 +282,7 @@ function _formSocketIoMaster()
 
   logger.log( '_formSocketIoMaster.end' );
 
-  // self._connectedCon.give( null );
+  // self._connectedCon.take( null );
 
 /*
 SocketIo.on('connection', function(socket){
@@ -408,7 +408,7 @@ function _formSocketIoSlave()
 
     logger.log( '_formSocketIoSlave.end' );
 
-    con.give( null );
+    con.take( null );
 
     return false;
   });
@@ -457,7 +457,7 @@ function _formNodeIpcSlave()
       /*Ipc.of.master.on( 'data',_.routineJoin( self,self.slaveReceivedPacket ) );*/
       // Ipc.of.master.on( 'error',_.routineJoin( self,self.slaveReceiveError ) );
       Ipc.of.master.on( 'error',( err ) => self._errorReceive({ err : err }) );
-      con.give( null );
+      con.take( null );
     }
   );
 
