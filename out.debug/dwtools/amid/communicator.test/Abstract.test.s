@@ -8,7 +8,7 @@
 if( typeof module !== 'undefined' )
 {
 
-  let _ = require( '../../../Tools.s' );
+  let _ = require( '../../Tools.s' );
 
   _.include( 'wTesting' );
   _.include( 'wCommunicator' );
