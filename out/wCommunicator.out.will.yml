@@ -54,7 +54,9 @@ path:
       - .
       - ./dwtools
       - ./dwtools/Tools.s
+      - ./dwtools/abase
       - ./dwtools/amid
+      - ./dwtools/amid/.DS_Store
       - ./dwtools/amid/communicator
       - ./dwtools/amid/communicator/Communicator.s
       - ./dwtools/amid/communicator/protocol
@@ -65,6 +67,7 @@ path:
       - ./dwtools/amid/communicator.test/Abstract.test.s
       - ./dwtools/amid/communicator.test/BrowserWorker.test.s
       - ./dwtools/amid/communicator.test/Tcp.test.s
+      - ./dwtools/atop
     criterion:
       default: 1
       debug: 1
@@ -76,6 +79,7 @@ path:
   exportedTerminals.0:
     path:
       - ./dwtools/Tools.s
+      - ./dwtools/amid/.DS_Store
       - ./dwtools/amid/communicator/Communicator.s
       - ./dwtools/amid/communicator/protocol/Abstract.s
       - ./dwtools/amid/communicator/protocol/BrowserWorker.s
@@ -166,6 +170,7 @@ reflector:
     recursive: 0
     filePath:
       ./dwtools/Tools.s: true
+      ./dwtools/amid/.DS_Store: true
       ./dwtools/amid/communicator/Communicator.s: true
       ./dwtools/amid/communicator/protocol/Abstract.s: true
       ./dwtools/amid/communicator/protocol/BrowserWorker.s: true
@@ -297,6 +302,7 @@ exported:
     exportedTerminalsPath:
       path:
         - ./dwtools/Tools.s
+        - ./dwtools/amid/.DS_Store
         - ./dwtools/amid/communicator/Communicator.s
         - ./dwtools/amid/communicator/protocol/Abstract.s
         - ./dwtools/amid/communicator/protocol/BrowserWorker.s
