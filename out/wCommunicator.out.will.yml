@@ -6,7 +6,7 @@ about:
     details of implementation of communication protocol and provides smooth
     experience though uniform API. Use the module to make your application more
     portable and less platform/environment dependent.
-  version: 0.3.40
+  version: 0.3.41
   enabled: 1
   interpreters:
     - nodejs >= 6.0.0
@@ -26,18 +26,18 @@ path:
   out:
     path: out
   out.debug:
-    path: ./out.debug
+    path: ./out/debug
     criterion:
       debug: 1
   out.release:
-    path: ./out.release
+    path: ./out/release
     criterion:
       debug: 0
   repository:
     path: 'git+https://github.com/Wandalen/wCommunicator.git'
   bugs:
     path: 'https://github.com/Wandalen/wCommunicator/issues'
-  exportedDir.0:
+  exportedDir.proto.export:
     path: ./proto
     criterion:
       default: 1
@@ -47,24 +47,24 @@ path:
       export: 1
       tar: 1
       public: 1
-  exportedFiles.0:
+  exportedFiles.proto.export:
     path:
-      - .
-      - ./dwtools
-      - ./dwtools/Tools.s
-      - ./dwtools/abase
-      - ./dwtools/amid
-      - ./dwtools/amid/communicator
-      - ./dwtools/amid/communicator/Communicator.s
-      - ./dwtools/amid/communicator/protocol
-      - ./dwtools/amid/communicator/protocol/Abstract.s
-      - ./dwtools/amid/communicator/protocol/BrowserWorker.s
-      - ./dwtools/amid/communicator/protocol/Tcp.s
-      - ./dwtools/amid/communicator.test
-      - ./dwtools/amid/communicator.test/Abstract.test.s
-      - ./dwtools/amid/communicator.test/BrowserWorker.test.s
-      - ./dwtools/amid/communicator.test/Tcp.test.s
-      - ./dwtools/atop
+      - proto
+      - proto/dwtools
+      - proto/dwtools/Tools.s
+      - proto/dwtools/abase
+      - proto/dwtools/amid
+      - proto/dwtools/amid/communicator
+      - proto/dwtools/amid/communicator/Communicator.s
+      - proto/dwtools/amid/communicator/protocol
+      - proto/dwtools/amid/communicator/protocol/Abstract.s
+      - proto/dwtools/amid/communicator/protocol/BrowserWorker.s
+      - proto/dwtools/amid/communicator/protocol/Tcp.s
+      - proto/dwtools/amid/communicator.test
+      - proto/dwtools/amid/communicator.test/Abstract.test.s
+      - proto/dwtools/amid/communicator.test/BrowserWorker.test.s
+      - proto/dwtools/amid/communicator.test/Tcp.test.s
+      - proto/dwtools/atop
     criterion:
       default: 1
       debug: 1
@@ -78,7 +78,7 @@ reflector:
   reflect.proto.:
     srcFilter:
       filePath:
-        ./proto: ./out.release
+        ./proto: ./out/release
       maskAll:
         excludeAny:
           - !<tag:yaml.org,2002:js/regexp> /(\W|^)node_modules(\W|$)/
@@ -99,7 +99,7 @@ reflector:
   reflect.proto.debug:
     srcFilter:
       filePath:
-        ./proto: ./out.debug
+        ./proto: ./out/debug
       maskAll:
         excludeAny:
           - !<tag:yaml.org,2002:js/regexp> /(\W|^)node_modules(\W|$)/
@@ -132,32 +132,49 @@ reflector:
       debug: 1
     inherit:
       - predefined.*
-  exported.0:
+  exported.proto.export:
     srcFilter:
-      filePath: ./proto
+      filePath:
+        ./proto: true
       prefixPath: .
-  exportedFiles.0:
+    criterion:
+      default: 1
+      debug: 1
+      raw: 1
+      proto: 1
+      export: 1
+      tar: 1
+      public: 1
+  exportedFiles.proto.export:
     recursive: 0
     srcFilter:
       filePath:
         .: true
-        ./dwtools: true
-        ./dwtools/Tools.s: true
-        ./dwtools/abase: true
-        ./dwtools/amid: true
-        ./dwtools/amid/communicator: true
-        ./dwtools/amid/communicator/Communicator.s: true
-        ./dwtools/amid/communicator/protocol: true
-        ./dwtools/amid/communicator/protocol/Abstract.s: true
-        ./dwtools/amid/communicator/protocol/BrowserWorker.s: true
-        ./dwtools/amid/communicator/protocol/Tcp.s: true
-        ./dwtools/amid/communicator.test: true
-        ./dwtools/amid/communicator.test/Abstract.test.s: true
-        ./dwtools/amid/communicator.test/BrowserWorker.test.s: true
-        ./dwtools/amid/communicator.test/Tcp.test.s: true
-        ./dwtools/atop: true
+        dwtools: true
+        dwtools/Tools.s: true
+        dwtools/abase: true
+        dwtools/amid: true
+        dwtools/amid/communicator: true
+        dwtools/amid/communicator/Communicator.s: true
+        dwtools/amid/communicator/protocol: true
+        dwtools/amid/communicator/protocol/Abstract.s: true
+        dwtools/amid/communicator/protocol/BrowserWorker.s: true
+        dwtools/amid/communicator/protocol/Tcp.s: true
+        dwtools/amid/communicator.test: true
+        dwtools/amid/communicator.test/Abstract.test.s: true
+        dwtools/amid/communicator.test/BrowserWorker.test.s: true
+        dwtools/amid/communicator.test/Tcp.test.s: true
+        dwtools/atop: true
       basePath: .
       prefixPath: proto
+    criterion:
+      default: 1
+      debug: 1
+      raw: 1
+      proto: 1
+      export: 1
+      tar: 1
+      public: 1
 step:
   clean.out.:
     criterion:
@@ -278,7 +295,7 @@ build:
       - 'step::export.proto'
 exported:
   proto.export:
-    version: 0.3.40
+    version: 0.3.41
     criterion:
       default: 1
       debug: 1
@@ -287,7 +304,7 @@ exported:
       export: 1
       tar: 1
       public: 1
-    exportedReflector: 'reflector::exported.0'
-    exportedFilesReflector: 'reflector::exportedFiles.0'
-    exportedDirPath: 'path::exportedDir.0'
-    exportedFilesPath: 'path::exportedFiles.0'
+    exportedReflector: 'reflector::exported.proto.export'
+    exportedFilesReflector: 'reflector::exportedFiles.proto.export'
+    exportedDirPath: 'path::exportedDir.proto.export'
+    exportedFilesPath: 'path::exportedFiles.proto.export'
