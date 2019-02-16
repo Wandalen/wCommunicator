@@ -4,7 +4,7 @@ about :
 
   name : "wCommunicator"
   description : "Sketch. Strategy for two points communication. Communicator abstracts details of implementation of communication protocol and provides smooth experience though uniform API. Use the module to make your application more portable and less platform/environment dependent."
-  version : "0.3.41"
+  version : "0.3.42"
   enabled : 1
   interpreters :
   - nodejs >= 6.0.0
