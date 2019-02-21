@@ -6,7 +6,7 @@ about:
     details of implementation of communication protocol and provides smooth
     experience though uniform API. Use the module to make your application more
     portable and less platform/environment dependent.
-  version: 0.3.42
+  version: 0.3.43
   enabled: 1
   interpreters:
     - nodejs >= 6.0.0
@@ -297,7 +297,7 @@ build:
       - 'step::export.proto'
 exported:
   proto.export:
-    version: 0.3.42
+    version: 0.3.43
     criterion:
       default: 1
       debug: 1
