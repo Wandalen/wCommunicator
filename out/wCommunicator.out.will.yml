@@ -81,6 +81,7 @@ reflector:
     src:
       filePath:
         .: .
+      prefixPath: proto
       maskAll:
         excludeAny:
           - !<tag:yaml.org,2002:js/regexp> /(\W|^)node_modules(\W|$)/
@@ -93,7 +94,6 @@ reflector:
           - !<tag:yaml.org,2002:js/regexp> /\.debug($|\.|\/)/i
           - !<tag:yaml.org,2002:js/regexp> /\.test($|\.|\/)/i
           - !<tag:yaml.org,2002:js/regexp> /\.experiment($|\.|\/)/i
-      prefixPath: proto
     dst:
       prefixPath: out/release
     criterion:
@@ -104,6 +104,7 @@ reflector:
     src:
       filePath:
         .: .
+      prefixPath: proto
       maskAll:
         excludeAny:
           - !<tag:yaml.org,2002:js/regexp> /(\W|^)node_modules(\W|$)/
@@ -114,7 +115,6 @@ reflector:
           - !<tag:yaml.org,2002:js/regexp> /\.DS_Store$/
           - !<tag:yaml.org,2002:js/regexp> /(^|\/)-/
           - !<tag:yaml.org,2002:js/regexp> /\.release($|\.|\/)/i
-      prefixPath: proto
     dst:
       prefixPath: out/debug
     criterion:
@@ -140,7 +140,7 @@ reflector:
   exported.proto.export:
     src:
       filePath:
-        .: true
+        .: null
       prefixPath: proto
     criterion:
       default: 1
@@ -154,22 +154,22 @@ reflector:
     recursive: 0
     src:
       filePath:
-        .: true
-        dwtools: true
-        dwtools/Tools.s: true
-        dwtools/abase: true
-        dwtools/amid: true
-        dwtools/amid/communicator: true
-        dwtools/amid/communicator/Communicator.s: true
-        dwtools/amid/communicator/protocol: true
-        dwtools/amid/communicator/protocol/Abstract.s: true
-        dwtools/amid/communicator/protocol/BrowserWorker.s: true
-        dwtools/amid/communicator/protocol/Tcp.s: true
-        dwtools/amid/communicator.test: true
-        dwtools/amid/communicator.test/Abstract.test.s: true
-        dwtools/amid/communicator.test/BrowserWorker.test.s: true
-        dwtools/amid/communicator.test/Tcp.test.s: true
-        dwtools/atop: true
+        .: null
+        dwtools: null
+        dwtools/Tools.s: null
+        dwtools/abase: null
+        dwtools/amid: null
+        dwtools/amid/communicator: null
+        dwtools/amid/communicator/Communicator.s: null
+        dwtools/amid/communicator/protocol: null
+        dwtools/amid/communicator/protocol/Abstract.s: null
+        dwtools/amid/communicator/protocol/BrowserWorker.s: null
+        dwtools/amid/communicator/protocol/Tcp.s: null
+        dwtools/amid/communicator.test: null
+        dwtools/amid/communicator.test/Abstract.test.s: null
+        dwtools/amid/communicator.test/BrowserWorker.test.s: null
+        dwtools/amid/communicator.test/Tcp.test.s: null
+        dwtools/atop: null
       basePath: .
       prefixPath: proto
     criterion:
