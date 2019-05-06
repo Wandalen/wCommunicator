@@ -21,8 +21,8 @@ execution :
 
 path :
 
-  repository : git+https://github.com/Wandalen/wCommunicator.git
-  bugs : https://github.com/Wandalen/wCommunicator/issues
+  repository : git+https:///github.com/Wandalen/wCommunicator.git
+  bugs : https:///github.com/Wandalen/wCommunicator/issues
 
 step :
 
