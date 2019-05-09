@@ -25,6 +25,12 @@ var Http, Net, SocketIo, Udp;
 
 //
 
+/**
+ * @classdesc Abstracts details of implementation of communication protocol and provides smooth experience though uniform API.
+ * @class wCommunicator
+ * @memberof module:Tools/mid/Communicator
+*/
+
 var _ = _global_.wTools;
 var Parent = null;
 var Self = function wCommunicator( o )
@@ -74,6 +80,12 @@ function unform()
 }
 
 //
+
+/**
+ * @summary Prepares fields of current instance.
+ * @function form
+ * @memberof module:Tools/mid/Communicator.wCommunicator#
+*/
 
 function form()
 {
@@ -467,6 +479,14 @@ function _formNodeIpcSlave()
 
 //
 
+/**
+ * @summary Sends 'data' through specified 'channel'.
+ * @param {String} channel Target channel name.
+ * @param {} data Entity to send.
+ * @function packetSend
+ * @memberof module:Tools/mid/Communicator.wCommunicator#
+*/
+
 function packetSend( channel,data )
 {
   var self = this;
@@ -483,6 +503,14 @@ packetSend.defaults =
 
 //
 
+/**
+ * @summary Sends 'data' through specified 'subchannel'.
+ * @param {String} subchannel Target channel name.
+ * @param {} data Entity to send.
+ * @function packetSpecialSend
+ * @memberof module:Tools/mid/Communicator.wCommunicator#
+*/
+
 function packetSpecialSend( subchannel,data )
 {
   var self = this;
@@ -498,6 +526,14 @@ packetSpecialSend.defaults =
 }
 
 //
+
+/**
+ * @descriptionNeeded
+ * @param {Object} o Options map.
+ * @param {} o.buffer Buffer to send.
+ * @function bufferSend
+ * @memberof module:Tools/mid/Communicator.wCommunicator#
+*/
 
 function bufferSend( o )
 {
@@ -524,6 +560,12 @@ bufferSend.defaults =
 //
 // --
 
+/**
+ * @summary Returns communication protocol used by current instance.
+ * @function protocolGet
+ * @memberof module:Tools/mid/Communicator.wCommunicator#
+*/
+
 function protocolGet()
 {
   var self = this;
@@ -543,6 +585,12 @@ function protocolGet()
 
 //
 
+/**
+ * @summary Returns target host name.
+ * @function hostGet
+ * @memberof module:Tools/mid/Communicator.wCommunicator#
+*/
+
 function hostGet()
 {
   var self = this;
@@ -558,6 +606,12 @@ function hostGet()
 }
 
 //
+
+/**
+ * @summary Returns target port value.
+ * @function hostGet
+ * @memberof module:Tools/mid/Communicator.wCommunicator#
+*/
 
 function portGet()
 {
