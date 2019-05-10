@@ -33,6 +33,12 @@ var _ = _global_.wTools;
 
 //
 
+/**
+ * @classdesc Communicator protocol for communication between main process and worker in a browser.
+ * @class wCommunicatorBrowserWorker
+ * @memberof module:Tools/mid/Communicator
+*/
+
 var _ = _global_.wTools;
 var Parent = _.CommunicatorProtocol.Abstract;
 var Self = function wCommunicatorBrowserWorker( o )
@@ -219,6 +225,14 @@ _packetSendBegin.defaults =
 
 //
 
+/**
+ * @summary Sends 'data' through specified 'channel'.
+ * @param {String} channel Target channel.
+ * @param {} data Data to send.
+ * @function packetSend
+ * @memberof module:Tools/mid/Communicator.wCommunicatorBrowserWorker#
+*/
+
 function packetSend( channel,data )
 {
   var self = this;
@@ -249,6 +263,14 @@ packetSend.defaults =
 
 //
 
+/**
+ * @summary Sends 'data' through specified 'subchannel'.
+ * @param {String} subchannel Target channel name.
+ * @param {} data Data to send.
+ * @function packetSpecialSend
+ * @memberof module:Tools/mid/Communicator.wCommunicatorBrowserWorker#
+*/
+
 function packetSpecialSend( subchannel,data )
 {
   var self = this;
@@ -277,6 +299,14 @@ packetSpecialSend.defaults =
 }
 
 //
+
+/**
+ * @descriptionNeeded
+ * @param {Object} o Options map.
+ * @param {} o.buffer Buffer to send.
+ * @function bufferSend
+ * @memberof module:Tools/mid/Communicator.wCommunicatorBrowserWorker#
+*/
 
 function bufferSend( o )
 {
