@@ -35,6 +35,12 @@ var Net, Stream;
 
 //
 
+/**
+ * @classdesc Communicator protocol for communication with a server using Tcp socket.
+ * @class wCommunicatorProtocolTcp
+ * @memberof module:Tools/mid/Communicator
+*/
+
 var _ = _global_.wTools;
 var Parent = _.CommunicatorProtocol.Abstract;
 var Self = function wCommunicatorProtocolTcp( o )
@@ -215,6 +221,14 @@ _packetSendBegin.defaults =
 
 //
 
+/**
+ * @summary Sends 'data' through specified 'channel'.
+ * @param {String} channel Target channel.
+ * @param {} data Data to send.
+ * @function packetSend
+ * @memberof module:Tools/mid/Communicator.wCommunicatorProtocolTcp#
+*/
+
 function packetSend( channel,data )
 {
   var self = this;
@@ -243,6 +257,14 @@ packetSend.defaults =
 
 //
 
+/**
+ * @summary Sends 'data' through specified 'subchannel'.
+ * @param {String} subchannel Target channel name.
+ * @param {} data Entity to send.
+ * @function packetSpecialSend
+ * @memberof module:Tools/mid/Communicator.wCommunicatorProtocolTcp#
+*/
+
 function packetSpecialSend( subchannel,data )
 {
   var self = this;
@@ -269,6 +291,14 @@ packetSpecialSend.defaults =
 }
 
 //
+
+/**
+ * @descriptionNeeded
+ * @param {Object} o Options map.
+ * @param {} o.buffer Buffer to send.
+ * @function bufferSend
+ * @memberof module:Tools/mid/Communicator.wCommunicatorProtocolTcp#
+*/
 
 function bufferSend( o )
 {

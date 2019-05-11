@@ -36,6 +36,12 @@ var Http, Net, SocketIo, Udp;
 
 //
 
+/**
+ * @classdesc Abstracts implementation of communication protocol.
+ * @class wCommunicatorProtocolAbstract
+ * @memberof module:Tools/mid/Communicator
+*/
+
 var _ = _global_.wTools;
 var Parent = null;
 var Self = function wCommunicatorProtocolAbstract( o )
@@ -87,6 +93,12 @@ function _unform()
 }
 
 //
+
+/**
+ * @summary Prepares fields of current instance.
+ * @function form
+ * @memberof module:Tools/mid/Communicator.wCommunicatorProtocolAbstract#
+*/
 
 function form()
 {
@@ -403,6 +415,15 @@ _packetSpecialSend.defaults =
 }
 
 //
+
+/**
+ * @summary Sends 'o.data' through specified 'o.channel'.
+ * @param {Object} o Options map.
+ * @param {String} o.channel Target channel.
+ * @param {} o.data Data to send.
+ * @function packetSend
+ * @memberof module:Tools/mid/Communicator.wCommunicatorProtocolAbstract#
+*/
 
 function packetSend( o )
 {
