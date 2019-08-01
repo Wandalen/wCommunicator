@@ -5,30 +5,12 @@
 if( typeof module !== 'undefined' )
 {
 
-  if( typeof _global_ === 'undefined' || !_global_.wBase )
-  {
-    let toolsPath = '../../../../dwtools/Base.s';
-    let toolsExternal = 0;
-    try
-    {
-      toolsPath = require.resolve( toolsPath );
-    }
-    catch( err )
-    {
-      toolsExternal = 1;
-      require( 'wTools' );
-    }
-    if( !toolsExternal )
-    require( toolsPath );
-  }
-
-  var _ = _global_.wTools;
+  let _ = require( '../../../Tools.s' );
 
   _.include( 'wConsequence' );
   _.include( 'wCopyable' );
   _.include( 'wCommunicator' );
-  // _.include( 'wBaseEncoder' );
-  require( '../../../abase/l4/Encoder.s' )
+  _.include( 'wBaseEncoder' );
 
 }
 
@@ -36,17 +18,11 @@ var Http, Net, SocketIo, Udp;
 
 //
 
-/**
- * @classdesc Abstracts implementation of communication protocol.
- * @class wCommunicatorProtocolAbstract
- * @memberof module:Tools/mid/Communicator
-*/
-
 var _ = _global_.wTools;
 var Parent = null;
 var Self = function wCommunicatorProtocolAbstract( o )
 {
-  return _.instanceConstructor( Self, this, arguments );
+  return _.workpiece.construct( Self, this, arguments );
 }
 
 Self.shortName = 'Abstract';
@@ -59,7 +35,7 @@ function init( o )
 {
   var self = this;
 
-  _.instanceInit( self );
+  _.workpiece.initFields( self );
   _.assert( arguments.length === 0 || arguments.length === 1 );
 
   Object.preventExtensions( self );
@@ -93,12 +69,6 @@ function _unform()
 }
 
 //
-
-/**
- * @summary Prepares fields of current instance.
- * @function form
- * @memberof module:Tools/mid/Communicator.wCommunicatorProtocolAbstract#
-*/
 
 function form()
 {
@@ -163,7 +133,7 @@ function _formStreams()
 
     self._bufferSendAct = function _bufferSendAct( data )
     {
-      _.assert( arguments.length === 1, 'expects single argument' );
+      _.assert( arguments.length === 1, 'Expects single argument' );
       /* var data = this._packetSendBegin({ data : data }); */
       this.bufferStreamLike.write( _.bufferNodeFrom( data ) );
     }
@@ -208,14 +178,14 @@ function _formStreams()
   if( _.routineIs( this.primeStreamLike.send ) )
   self._packetSendAct = function _packetSendAct( data )
   {
-    _.assert( arguments.length === 1, 'expects single argument' );
+    _.assert( arguments.length === 1, 'Expects single argument' );
     debugger;
     this.primeStreamLike.send( data );
   }
   else if( _.routineIs( this.primeStreamLike.write ) )
   self._packetSendAct = function _packetSendAct( data )
   {
-    _.assert( arguments.length === 1, 'expects single argument' );
+    _.assert( arguments.length === 1, 'Expects single argument' );
     // debugger;
     // if( !_.bufferNodeIs( data ) && !_.strIs( data ) )
     // data = _.toJson( data );
@@ -309,13 +279,13 @@ function _formTempSend()
 
   function _packetSendAct( data )
   {
-    _.assert( arguments.length === 1, 'expects single argument' );
+    _.assert( arguments.length === 1, 'Expects single argument' );
     self._packetSendLater.push( data );
   }
 
   function _bufferSendAct( data )
   {
-    _.assert( arguments.length === 1, 'expects single argument' );
+    _.assert( arguments.length === 1, 'Expects single argument' );
     self._bufferSendLater.push( data );
   }
 
@@ -324,7 +294,7 @@ function _formTempSend()
   _.assert( self._bufferSendAct === null );
   self._bufferSendAct = _bufferSendAct;
 
-  self._conConnect.doThen( function()
+  self._conConnect.finally( function()
   {
     debugger;
 
@@ -356,7 +326,7 @@ function _formTempSend()
 //
 //   self._bufferSend = function _bufferSend( data )
 //   {
-//     _.assert( arguments.length === 1, 'expects single argument' );
+//     _.assert( arguments.length === 1, 'Expects single argument' );
 //     this.packetSpecialSend( 'buffer',{ size : data.byteLength, cls : data.constructor } );
 //     // this.primeStreamLike.write( _.bufferNodeFrom( data ) );
 //   }
@@ -369,7 +339,7 @@ function _bufferSendWithTheSameStream( buffer )
 {
   var self = this;
   var com = self.communicator;
-  _.assert( arguments.length === 1, 'expects single argument' );
+  _.assert( arguments.length === 1, 'Expects single argument' );
 
   self._packetSpecialSend( 'buffer',{ size : buffer.byteLength, cls : buffer.constructor.name } );
 
@@ -382,7 +352,7 @@ function _bufferSend( buffer )
 {
   var self = this;
   var com = self.communicator;
-  _.assert( arguments.length === 1, 'expects single argument' );
+  _.assert( arguments.length === 1, 'Expects single argument' );
   self._bufferSendAct( buffer );
 }
 
@@ -416,15 +386,6 @@ _packetSpecialSend.defaults =
 
 //
 
-/**
- * @summary Sends 'o.data' through specified 'o.channel'.
- * @param {Object} o Options map.
- * @param {String} o.channel Target channel.
- * @param {} o.data Data to send.
- * @function packetSend
- * @memberof module:Tools/mid/Communicator.wCommunicatorProtocolAbstract#
-*/
-
 function packetSend( o )
 {
   var self = this;
@@ -454,7 +415,7 @@ function _packetSend( o )
   // else
   // o = { channel : 'message', data : arguments[ 0 ] }
 
-  _.assert( arguments.length === 1, 'expects single argument' );
+  _.assert( arguments.length === 1, 'Expects single argument' );
   _.assert( o.channel !== undefined && o.channel !== null );
   _.assert( o.data !== undefined );
   _.routineOptions( _packetSend,o );
@@ -501,8 +462,8 @@ function _packetSendBegin( o )
   var self = this;
   var com = self.communicator;
   _.routineOptions( _packetSendBegin,o );
-  _.assert( arguments.length === 1, 'expects single argument' );
-  _.assert( _.strIsNotEmpty( o.channel ),'expects string { channel }, but got',_.strTypeOf( o.channel ) );
+  _.assert( arguments.length === 1, 'Expects single argument' );
+  _.assert( _.strDefined( o.channel ),'Expects string { channel }, but got',_.strType( o.channel ) );
   return o;
 }
 
@@ -523,7 +484,7 @@ function _rawReceive( o )
   var com = self.communicator;
 
   _.routineOptions( _rawReceive,o );
-  _.assert( arguments.length === 1, 'expects single argument' );
+  _.assert( arguments.length === 1, 'Expects single argument' );
   _.assert( _.bufferNodeIs( o.data ) );
 
   o.data = _.bufferBytesGet( o.data );
@@ -649,7 +610,7 @@ function _packetReceive( o )
   {
 
     _.routineOptions( _packetReceive,o );
-    _.assert( arguments.length === 1, 'expects single argument' );
+    _.assert( arguments.length === 1, 'Expects single argument' );
 
     if( o.format === 'buffer' )
     {
@@ -727,7 +688,7 @@ function _packetSpecialReceive( o )
   var com = self.communicator;
 
   _.routineOptions( _packetSpecialReceive,o );
-  _.assert( arguments.length === 1, 'expects single argument' );
+  _.assert( arguments.length === 1, 'Expects single argument' );
   _.assert( o.packet.subchannel === 'packetSpecial',o.packet );
   _.assert( _.strIs( o.packet.subchannel ),o.packet );
 
@@ -757,7 +718,7 @@ function _errorReceive( o )
   com.errors.push( null );
 
   _.routineOptions( _errorReceive,o );
-  _.assert( arguments.length === 1, 'expects single argument' );
+  _.assert( arguments.length === 1, 'Expects single argument' );
 
   var err = _.err( com.nameTitle, ':', 'error\n',o.err );
 
@@ -940,7 +901,7 @@ _.classDeclare
 
 _.Copyable.mixin( Self );
 
-_.accessor.forbid(Self.prototype,Forbids );
+_.accessor.forbid( Self.prototype,Forbids );
 
 //
 

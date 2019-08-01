@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-title" content="Encore">
+    <title>Encore</title>
+    <!-- icons-->
+    <link href="favicon.ico" rel="shortcut icon">
+    <meta content="bigicon.jpg" property="og:image">
+    <!-- predefined-->
+    <meta content="Encore" name="description">
+    <!--meta( name='viewport' content='width=device-width, height=device-height, initial-scale=1, maximum-scale=1' )-->
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- style-->
+    <link href="/common.external/calendar/calendar.css" rel="stylesheet" type="text/css">
+    <!-- style-->
+    <!-- script-->
+
+    <script staging src="../../../dwtools/Base.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/Layer1.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/Layer2.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/Layer3.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l1/aFundamental.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l1/cDiagnostics.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l1/eFieldMapper.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l1/kArrayDescriptor.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l1/zSetup.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l2/fExecTools.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l2/fIncludeTools.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l2/fNameTools.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l2/fStringTools.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l4/aStringer.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l5/Cloner.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/l3/Path.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/l3/Proto.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/l3/ProtoLike.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l4/RoutineTransform.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l4/ArraySorted.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l4/ArraySparse.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l4/Encoder.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l4/Changes.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l7_mixin/ChangeTransactor.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l7_mixin/Consequizer.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l7_mixin/Copyable.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l7_mixin/EventHandler.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l7_mixin/FieldsStack.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l7_mixin/Instancing.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l7_mixin/TimeMarker.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l7_mixin.test/Changes.test.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l7_mixin.test/Copyable.test.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l7_mixin.test/EventHandler.test.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l9/consequence/Consequence.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l9/consequence/RegexpObject.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/amid/bclass/Vocabulary.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l9/printer/aChainingMixin.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l9/printer/aColoredMixin.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l9/printer/PrinterBase.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l9/printer/PrinterMid.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l9/printer/PrinterTop.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l9/printer/top/Logger.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l9/printer/top/LoggerExtra.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l9/printer/top/ToJstructure.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l9/printer/top/ToLayeredHtml.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l9/printer/top/ToString.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l9/printer.test/Browser.test.js" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l9/printer.test/Chaining.test.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l9/printer.test/Logger.test.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l9/printer.test/Other.test.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l9/consequence.test/Consequence.test.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l9/consequence.test/RegExp.test.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/l9/consequence.test/Vocabulary.test.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/tbrowser/Blob.js" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/tbrowser/Dataurl.js" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/tbrowser/DomBase.js" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/tbrowser/DomMid.js" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/tbrowser/File.js" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/tbrowser/Image.js" type="text/javascript"></script>
+    <script staging src="../../../dwtools/abase/tbrowser/Sound.js" type="text/javascript"></script>
+    <script staging src="../../../dwtools/atop/tester/aTestSuit.debug.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/atop/tester/bTestRoutine.debug.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/atop/tester/cTester.debug.s" type="text/javascript"></script>
+
+    <script staging src="../../../dwtools/amid/color/Color.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/amid/color/Color256.s" type="text/javascript"></script>
+
+    <script staging src="../../../dwtools/amid/communicator/Communicator.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/amid/communicator/protocol/Abstract.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/amid/communicator/protocol/BrowserWorker.s" type="text/javascript"></script>
+    <script staging src="../../../dwtools/amid/communicator/protocol/Tcp.s" type="text/javascript"></script>
+
+    <script staging src="./Abstract.test.s" type="text/javascript"></script>
+    <script staging src="./BrowserWorker.test.s" type="text/javascript"></script>
+
+    <!-- script-->
+  </head>
+  <body class="viewer layout-not-ready">
+  </body>
+</html>
