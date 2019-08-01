@@ -5,24 +5,7 @@
 if( typeof module !== 'undefined' )
 {
 
-  if( typeof _global_ === 'undefined' || !_global_.wBase )
-  {
-    let toolsPath = '../../../../dwtools/Base.s';
-    let toolsExternal = 0;
-    try
-    {
-      toolsPath = require.resolve( toolsPath );
-    }
-    catch( err )
-    {
-      toolsExternal = 1;
-      require( 'wTools' );
-    }
-    if( !toolsExternal )
-    require( toolsPath );
-  }
-
-var _ = _global_.wTools;
+  let _ = require( '../../../Tools.s' );
 
   _.include( 'wCopyable' );
   _.include( 'wCommunicator' );
@@ -35,17 +18,11 @@ var Net, Stream;
 
 //
 
-/**
- * @classdesc Communicator protocol for communication with a server using Tcp socket.
- * @class wCommunicatorProtocolTcp
- * @memberof module:Tools/mid/Communicator
-*/
-
 var _ = _global_.wTools;
 var Parent = _.CommunicatorProtocol.Abstract;
 var Self = function wCommunicatorProtocolTcp( o )
 {
-  return _.instanceConstructor( Self, this, arguments );
+  return _.workpiece.construct( Self, this, arguments );
 }
 
 Self.shortName = 'tcp';
@@ -118,12 +95,12 @@ function _formMaster()
     self.primeStreamLike = socket;
     self._formStreams();
 
-    self._conConnect.give( null );
+    self._conConnect.take( null );
   });
 
   var port = com.portGet();
   var host = com.hostGet();
-  _.assert( port,'expects port, but got',_.strType( port ) );
+  _.assert( port,'Expects port, but got',_.strType( port ) );
 
   try
   {
@@ -163,14 +140,14 @@ function _formSlave()
   var port = com.portGet();
   var host = com.hostGet();
 
-  _.assert( port,'expects port, but got',_.strType( port ) );
+  _.assert( port,'Expects port, but got',_.strType( port ) );
 
   // logger.log( 'host',host );
   // logger.log( 'port',port );
 
   stream.connect( port,host, function()
   {
-    con.give( null );
+    con.take( null );
   });
 
   self._formStreams();
@@ -221,14 +198,6 @@ _packetSendBegin.defaults =
 
 //
 
-/**
- * @summary Sends 'data' through specified 'channel'.
- * @param {String} channel Target channel.
- * @param {} data Data to send.
- * @function packetSend
- * @memberof module:Tools/mid/Communicator.wCommunicatorProtocolTcp#
-*/
-
 function packetSend( channel,data )
 {
   var self = this;
@@ -257,14 +226,6 @@ packetSend.defaults =
 
 //
 
-/**
- * @summary Sends 'data' through specified 'subchannel'.
- * @param {String} subchannel Target channel name.
- * @param {} data Entity to send.
- * @function packetSpecialSend
- * @memberof module:Tools/mid/Communicator.wCommunicatorProtocolTcp#
-*/
-
 function packetSpecialSend( subchannel,data )
 {
   var self = this;
@@ -292,20 +253,12 @@ packetSpecialSend.defaults =
 
 //
 
-/**
- * @descriptionNeeded
- * @param {Object} o Options map.
- * @param {} o.buffer Buffer to send.
- * @function bufferSend
- * @memberof module:Tools/mid/Communicator.wCommunicatorProtocolTcp#
-*/
-
 function bufferSend( o )
 {
   var self = this;
 
   _.assert( o.data !== undefined );
-  _.assert( arguments.length === 1 );
+  _.assert( arguments.length === 1, 'Expects single argument' );
   _.routineOptions( bufferSend,o );
 
   self._bufferSend( o.data );
@@ -344,7 +297,7 @@ var Statics =
 }
 
 // --
-// prototype
+// declare
 // --
 
 var Proto =
@@ -362,7 +315,7 @@ var Proto =
 
   // relations
 
-  /* constructor * : * Self, */
+
   Composes : Composes,
   Aggregates : Aggregates,
   Associates : Associates,

@@ -1,6 +1,6 @@
 ( function _Tcp_test_s_( ) {
 
-'use strict';
+'use strict'; /*hhh*/
 
 // !!! disabled because it is experimental functionality
 // return;
@@ -13,7 +13,7 @@ return;
 if( typeof module !== 'undefined' )
 {
 
-  let _ = require( '../../Tools.s' );
+  let _ = require( '../../../Tools.s' );
 
   _.include( 'wTesting' );
   _.include( 'wCommunicator' );
@@ -24,7 +24,7 @@ if( typeof module !== 'undefined' )
 
 var _ = _global_.wTools;
 var Parent = wTests[ 'CommunicatorAbstract' ];
-_.assert( Parent );
+_.assert( !!Parent );
 
 // --
 // test

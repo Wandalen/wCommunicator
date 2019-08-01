@@ -33,7 +33,7 @@ function trivial( test )
 
   /* */
 
-  var con = new _.Consequence().done( 1 );
+  var con = new _.Consequence().give( 1 );
 
   con.finally( function( err,arg )
   {
@@ -132,7 +132,7 @@ function buffer( test )
 
   /* */
 
-  var con = new _.Consequence().done( 1 );
+  var con = new _.Consequence().give( 1 );
 
   con.finally( function( err,arg )
   {
