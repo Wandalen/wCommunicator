@@ -189,7 +189,7 @@ function _formStreams()
     // debugger;
     // if( !_.bufferNodeIs( data ) && !_.strIs( data ) )
     // data = _.toJson( data );
-    // _.assert( data instanceof Uint8Array );
+    // _.assert( data instanceof U8x );
     data = _.toJson( data ) + self._streamDelimeterString;
     this.primeStreamLike.write( data );
   }

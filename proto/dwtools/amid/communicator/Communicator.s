@@ -530,7 +530,7 @@ packetSpecialSend.defaults =
 /**
  * @descriptionNeeded
  * @param {Object} o Options map.
- * @param {} o.buffer Buffer to send.
+ * @param {} o.buffer BufferNode to send.
  * @function bufferSend
  * @memberof module:Tools/mid/Communicator.wCommunicator#
 */

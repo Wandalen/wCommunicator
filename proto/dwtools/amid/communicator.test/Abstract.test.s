@@ -124,9 +124,9 @@ function buffer( test )
   var self = this;
 
   var expectedPacketsByMaster = [ 'from slave a' ];
-  var expectedBuffersByMaster = [ new Float32Array([ 1,2,3 ]), new Float32Array([ 4,5,6 ]) ];
+  var expectedBuffersByMaster = [ new F32x([ 1,2,3 ]), new F32x([ 4,5,6 ]) ];
   var expectedPacketsBySlave = [ 'from master a' ];
-  var expectedBuffersBySlave = [ new Float32Array([ 7,8,9 ]), new Float32Array([ 10,11,12 ]), new Float32Array([ 13,14,15 ]) ];
+  var expectedBuffersBySlave = [ new F32x([ 7,8,9 ]), new F32x([ 10,11,12 ]), new F32x([ 13,14,15 ]) ];
 
   test.case = 'buffer';
 
@@ -172,9 +172,9 @@ function buffer( test )
   debugger;
   master.form();
 
-  master.bufferSend( new Float32Array([ 7,8,9 ]) );
-  master.bufferSend( new Float32Array([ 10,11,12 ]) );
-  master.bufferSend( new Float32Array([ 13,14,15 ]) );
+  master.bufferSend( new F32x([ 7,8,9 ]) );
+  master.bufferSend( new F32x([ 10,11,12 ]) );
+  master.bufferSend( new F32x([ 13,14,15 ]) );
 
   master.packetSend( 'from master a' );
 
@@ -219,8 +219,8 @@ function buffer( test )
   slave.form();
   slave.packetSend( 'from slave a' );
 
-  slave.bufferSend( new Float32Array([ 1,2,3 ]) );
-  slave.bufferSend( new Float32Array([ 4,5,6 ]) );
+  slave.bufferSend( new F32x([ 1,2,3 ]) );
+  slave.bufferSend( new F32x([ 4,5,6 ]) );
 
   slave
   .on( 'terminateReceived', function()
