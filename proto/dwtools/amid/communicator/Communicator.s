@@ -381,7 +381,7 @@ function _formSocketIoSlave()
     if( 0 )
     self.logConnection();
     if( 0 )
-    _.timeOut( 3000,function()
+    _.time.out( 3000,function()
     {
       self.logConnection();
     });
