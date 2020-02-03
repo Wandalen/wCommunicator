@@ -161,7 +161,7 @@ function _terminateReceiveBefore()
 {
   var self = this;
 
-  _.assert( arguments.length === 0 );
+  _.assert( arguments.length === 0, 'Expects no arguments' );
 
 }
 
@@ -171,7 +171,7 @@ function _terminateReceiveAfter()
 {
   var self = this;
 
-  _.assert( arguments.length === 0 );
+  _.assert( arguments.length === 0, 'Expects no arguments' );
 
 }
 

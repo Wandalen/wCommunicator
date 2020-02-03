@@ -509,7 +509,7 @@ function _rawReceivedProceed()
   try
   {
 
-    _.assert( arguments.length === 0 );
+    _.assert( arguments.length === 0, 'Expects no arguments' );
 
     if( self._receivingBuffer )
     return self._rawRecievedBufferProceed();
@@ -560,7 +560,7 @@ function _rawRecievedBufferProceed()
   var com = self.communicator;
   var receiving = self._receivingBuffer;
 
-  _.assert( arguments.length === 0 );
+  _.assert( arguments.length === 0, 'Expects no arguments' );
   _.assert( receiving );
   _.assert( _global_[ receiving.cls ],'unknown type of buffer',receiving.cls );
   _.assert( _.bufferBytesIs( self._streamBuffer ) );
@@ -742,7 +742,7 @@ function _terminateReceive()
   var self = this;
   var com = self.communicator;
 
-  _.assert( arguments.length === 0 );
+  _.assert( arguments.length === 0, 'Expects no arguments' );
 
   self._terminateReceiveBefore();
 
@@ -764,7 +764,7 @@ function _terminateReceiveBefore()
   var self = this;
   var com = self.communicator;
 
-  _.assert( arguments.length === 0 );
+  _.assert( arguments.length === 0, 'Expects no arguments' );
 
 }
 
@@ -775,7 +775,7 @@ function _terminateReceiveAfter()
   var self = this;
   var com = self.communicator;
 
-  _.assert( arguments.length === 0 );
+  _.assert( arguments.length === 0, 'Expects no arguments' );
 
 }
 
