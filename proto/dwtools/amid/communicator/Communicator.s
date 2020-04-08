@@ -28,7 +28,8 @@ var Http, Net, SocketIo, Udp;
 /**
  * @classdesc Abstracts details of implementation of communication protocol and provides smooth experience though uniform API.
  * @class wCommunicator
- * @memberof module:Tools/mid/Communicator
+ * @namespace wTools
+ * @module Tools/mid/Communicator
 */
 
 var _ = _global_.wTools;
@@ -84,7 +85,9 @@ function unform()
 /**
  * @summary Prepares fields of current instance.
  * @function form
- * @memberof module:Tools/mid/Communicator.wCommunicator#
+ * @class wCommunicator
+ * @namespace wTools
+ * @module Tools/mid/Communicator
 */
 
 function form()
@@ -484,7 +487,9 @@ function _formNodeIpcSlave()
  * @param {String} channel Target channel name.
  * @param {} data Entity to send.
  * @function packetSend
- * @memberof module:Tools/mid/Communicator.wCommunicator#
+ * @class wCommunicator
+ * @namespace wTools
+ * @module Tools/mid/Communicator
 */
 
 function packetSend( channel,data )
@@ -508,7 +513,9 @@ packetSend.defaults =
  * @param {String} subchannel Target channel name.
  * @param {} data Entity to send.
  * @function packetSpecialSend
- * @memberof module:Tools/mid/Communicator.wCommunicator#
+ * @class wCommunicator
+ * @namespace wTools
+ * @module Tools/mid/Communicator
 */
 
 function packetSpecialSend( subchannel,data )
@@ -532,7 +539,9 @@ packetSpecialSend.defaults =
  * @param {Object} o Options map.
  * @param {} o.buffer BufferNode to send.
  * @function bufferSend
- * @memberof module:Tools/mid/Communicator.wCommunicator#
+ * @class wCommunicator
+ * @namespace wTools
+ * @module Tools/mid/Communicator
 */
 
 function bufferSend( o )
@@ -563,7 +572,9 @@ bufferSend.defaults =
 /**
  * @summary Returns communication protocol used by current instance.
  * @function protocolGet
- * @memberof module:Tools/mid/Communicator.wCommunicator#
+ * @class wCommunicator
+ * @namespace wTools
+ * @module Tools/mid/Communicator
 */
 
 function protocolGet()
@@ -588,7 +599,9 @@ function protocolGet()
 /**
  * @summary Returns target host name.
  * @function hostGet
- * @memberof module:Tools/mid/Communicator.wCommunicator#
+ * @class wCommunicator
+ * @namespace wTools
+ * @module Tools/mid/Communicator
 */
 
 function hostGet()
@@ -610,7 +623,9 @@ function hostGet()
 /**
  * @summary Returns target port value.
  * @function hostGet
- * @memberof module:Tools/mid/Communicator.wCommunicator#
+ * @class wCommunicator
+ * @namespace wTools
+ * @module Tools/mid/Communicator
 */
 
 function portGet()
