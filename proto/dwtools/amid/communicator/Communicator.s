@@ -485,7 +485,7 @@ function _formNodeIpcSlave()
 /**
  * @summary Sends 'data' through specified 'channel'.
  * @param {String} channel Target channel name.
- * @param {} data Entity to send.
+ * @param {*} data Entity to send.
  * @function packetSend
  * @class wCommunicator
  * @namespace wTools
@@ -511,7 +511,7 @@ packetSend.defaults =
 /**
  * @summary Sends 'data' through specified 'subchannel'.
  * @param {String} subchannel Target channel name.
- * @param {} data Entity to send.
+ * @param {*} data Entity to send.
  * @function packetSpecialSend
  * @class wCommunicator
  * @namespace wTools
@@ -537,7 +537,7 @@ packetSpecialSend.defaults =
 /**
  * @descriptionNeeded
  * @param {Object} o Options map.
- * @param {} o.buffer BufferNode to send.
+ * @param {*} o.buffer BufferNode to send.
  * @function bufferSend
  * @class wCommunicator
  * @namespace wTools
