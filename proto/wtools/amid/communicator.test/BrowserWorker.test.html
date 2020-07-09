@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-title" content="Encore">
+    <title>Encore</title>
+    <!-- icons-->
+    <link href="favicon.ico" rel="shortcut icon">
+    <meta content="bigicon.jpg" property="og:image">
+    <!-- predefined-->
+    <meta content="Encore" name="description">
+    <!--meta( name='viewport' content='width=device-width, height=device-height, initial-scale=1, maximum-scale=1' )-->
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- style-->
+    <link href="/common.external/calendar/calendar.css" rel="stylesheet" type="text/css">
+    <!-- style-->
+    <!-- script-->
+
+    <script staging src="../../../../wtools/Tools.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/Layer1.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/Layer2.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/Layer3.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l1/aFundamental.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l1/cDiagnostics.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l1/eFieldMapper.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l1/kArrayDescriptor.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l1/zSetup.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l2/fExecTools.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l2/fIncludeTools.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l2/fNameTools.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l2/fStringTools.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l4/aStringer.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l5/Cloner.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/l3/Path.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/l3/Proto.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/l3/ProtoLike.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l4/RoutineTransform.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l4/ArraySorted.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l4/ArraySparse.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l4/Encoder.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l4/Changes.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l7_mixin/ChangeTransactor.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l7_mixin/Consequizer.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l7_mixin/Copyable.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l7_mixin/EventHandler.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l7_mixin/FieldsStack.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l7_mixin/Instancing.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l7_mixin/TimeMarker.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l7_mixin.test/Changes.test.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l7_mixin.test/Copyable.test.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l7_mixin.test/EventHandler.test.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l9/consequence/Consequence.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l9/consequence/RegexpObject.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/amid/bclass/Vocabulary.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l9/logger/aChainingMixin.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l9/logger/aColoredMixin.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l9/logger/PrinterBase.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l9/logger/LoggerMid.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l9/logger/LoggerTop.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l9/logger/entry/Logger.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l9/logger/LoggerExtra.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l9/logger/ToJstructure.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l9/logger/ToLayeredHtml.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l9/logger/ToString.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l9/logger.test/Browser.test.js" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l9/logger.test/Chaining.test.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l9/logger.test/Logger.test.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l9/logger.test/Other.test.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l9/consequence.test/Consequence.test.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l9/consequence.test/RegExp.test.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/l9/consequence.test/Vocabulary.test.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/tbrowser/Blob.js" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/tbrowser/Dataurl.js" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/tbrowser/DomBase.js" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/tbrowser/DomMid.js" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/tbrowser/File.js" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/tbrowser/Image.js" type="text/javascript"></script>
+    <script staging src="../../../wtools/abase/tbrowser/Sound.js" type="text/javascript"></script>
+    <script staging src="../../../wtools/atop/tester/aTestSuit.debug.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/atop/tester/bTestRoutine.debug.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/atop/tester/cTester.debug.s" type="text/javascript"></script>
+
+    <script staging src="../../../wtools/amid/color/Color.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/amid/color/Color256.s" type="text/javascript"></script>
+
+    <script staging src="../../../wtools/amid/communicator/Communicator.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/amid/communicator/protocol/Abstract.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/amid/communicator/protocol/BrowserWorker.s" type="text/javascript"></script>
+    <script staging src="../../../wtools/amid/communicator/protocol/Tcp.s" type="text/javascript"></script>
+
+    <script staging src="./Abstract.test.s" type="text/javascript"></script>
+    <script staging src="./BrowserWorker.test.s" type="text/javascript"></script>
+
+    <!-- script-->
+  </head>
+  <body class="viewer layout-not-ready">
+  </body>
+</html>

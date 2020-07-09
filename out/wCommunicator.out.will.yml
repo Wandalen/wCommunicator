@@ -116,7 +116,7 @@ module:
       entry.proto.no.tests:
         criterion:
           tests: no.tests
-        path: ../proto/dwtools/amid/communicator/Communicator.s
+        path: ../proto/wtools/amid/communicator/Communicator.s
       entry.proto.only.tests:
         criterion:
           tests: only.tests
@@ -126,13 +126,13 @@ module:
           debug: debug
           raw: raw
           content: prime
-        path: '{path::out.*=1}/source/dwtools/amid/communicator/Communicator.s'
+        path: '{path::out.*=1}/source/wtools/amid/communicator/Communicator.s'
       entry.out.raw.debug.release:
         criterion:
           debug: release
           raw: raw
           content: prime
-        path: '{path::out.*=1}/source/dwtools/amid/communicator/Communicator.s'
+        path: '{path::out.*=1}/source/wtools/amid/communicator/Communicator.s'
       entry.out.compiled.debug.debug:
         criterion:
           debug: debug
@@ -159,32 +159,32 @@ module:
         path:
           - ../proto
           - ../proto/Integration.test.s
-          - ../proto/dwtools
-          - ../proto/dwtools/Tools.s
-          - ../proto/dwtools/abase
-          - ../proto/dwtools/amid
-          - ../proto/dwtools/amid/-communicator
-          - ../proto/dwtools/amid/-communicator/Communicator.s
-          - ../proto/dwtools/amid/-communicator/protocol
-          - ../proto/dwtools/amid/-communicator/protocol/Abstract.s
-          - ../proto/dwtools/amid/-communicator/protocol/BrowserWorker.s
-          - ../proto/dwtools/amid/-communicator/protocol/Tcp.s
-          - ../proto/dwtools/amid/-communicator.test
-          - ../proto/dwtools/amid/-communicator.test/Abstract.test.s
-          - ../proto/dwtools/amid/-communicator.test/BrowserWorker.test.s
-          - ../proto/dwtools/amid/-communicator.test/Tcp.test.s
-          - ../proto/dwtools/amid/communicator
-          - ../proto/dwtools/amid/communicator/Communicator.s
-          - ../proto/dwtools/amid/communicator/protocol
-          - ../proto/dwtools/amid/communicator/protocol/Abstract.s
-          - ../proto/dwtools/amid/communicator/protocol/BrowserWorker.s
-          - ../proto/dwtools/amid/communicator/protocol/Tcp.s
-          - ../proto/dwtools/amid/communicator.test
-          - ../proto/dwtools/amid/communicator.test/Abstract.test.s
-          - ../proto/dwtools/amid/communicator.test/BrowserWorker.test.html
-          - ../proto/dwtools/amid/communicator.test/BrowserWorker.test.s
-          - ../proto/dwtools/amid/communicator.test/Tcp.test.s
-          - ../proto/dwtools/atop
+          - ../proto/wtools
+          - ../proto/wtools/Tools.s
+          - ../proto/wtools/abase
+          - ../proto/wtools/amid
+          - ../proto/wtools/amid/-communicator
+          - ../proto/wtools/amid/-communicator/Communicator.s
+          - ../proto/wtools/amid/-communicator/protocol
+          - ../proto/wtools/amid/-communicator/protocol/Abstract.s
+          - ../proto/wtools/amid/-communicator/protocol/BrowserWorker.s
+          - ../proto/wtools/amid/-communicator/protocol/Tcp.s
+          - ../proto/wtools/amid/-communicator.test
+          - ../proto/wtools/amid/-communicator.test/Abstract.test.s
+          - ../proto/wtools/amid/-communicator.test/BrowserWorker.test.s
+          - ../proto/wtools/amid/-communicator.test/Tcp.test.s
+          - ../proto/wtools/amid/communicator
+          - ../proto/wtools/amid/communicator/Communicator.s
+          - ../proto/wtools/amid/communicator/protocol
+          - ../proto/wtools/amid/communicator/protocol/Abstract.s
+          - ../proto/wtools/amid/communicator/protocol/BrowserWorker.s
+          - ../proto/wtools/amid/communicator/protocol/Tcp.s
+          - ../proto/wtools/amid/communicator.test
+          - ../proto/wtools/amid/communicator.test/Abstract.test.s
+          - ../proto/wtools/amid/communicator.test/BrowserWorker.test.html
+          - ../proto/wtools/amid/communicator.test/BrowserWorker.test.s
+          - ../proto/wtools/amid/communicator.test/Tcp.test.s
+          - ../proto/wtools/atop
     submodule:
       wTools:
         path: 'npm:///wTools'
@@ -922,7 +922,7 @@ module:
       entry.proto.no.tests:
         criterion:
           tests: no.tests
-        path: proto/dwtools/amid/communicator/Communicator.s
+        path: proto/wtools/amid/communicator/Communicator.s
       entry.proto.only.tests:
         criterion:
           tests: only.tests
@@ -932,13 +932,13 @@ module:
           debug: debug
           raw: raw
           content: prime
-        path: '{path::out.*=1}/source/dwtools/amid/communicator/Communicator.s'
+        path: '{path::out.*=1}/source/wtools/amid/communicator/Communicator.s'
       entry.out.raw.debug.release:
         criterion:
           debug: release
           raw: raw
           content: prime
-        path: '{path::out.*=1}/source/dwtools/amid/communicator/Communicator.s'
+        path: '{path::out.*=1}/source/wtools/amid/communicator/Communicator.s'
       entry.out.compiled.debug.debug:
         criterion:
           debug: debug
