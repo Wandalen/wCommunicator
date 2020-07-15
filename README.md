@@ -6,7 +6,7 @@ Sketch. Strategy for two points communication. Communicator abstracts details of
 ### Try out
 ```
 npm install
-node sample/Sample.js
+node sample/Sample.s
 ```
 
 
