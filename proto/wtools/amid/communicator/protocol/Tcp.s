@@ -18,9 +18,9 @@ var Net, Stream;
 
 //
 
-var _ = _global_.wTools;
-var Parent = _.CommunicatorProtocol.Abstract;
-var Self = function wCommunicatorProtocolTcp( o )
+let _ = _global_.wTools;
+let Parent = _.CommunicatorProtocol.Abstract;
+let Self = function wCommunicatorProtocolTcp( o )
 {
   return _.workpiece.construct( Self, this, arguments );
 }

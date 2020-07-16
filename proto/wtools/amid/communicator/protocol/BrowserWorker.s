@@ -16,9 +16,9 @@ if( typeof module !== 'undefined' )
 
 //
 
-var _ = _global_.wTools;
-var Parent = _.CommunicatorProtocol.Abstract;
-var Self = function wCommunicatorBrowserWorker( o )
+let _ = _global_.wTools;
+let Parent = _.CommunicatorProtocol.Abstract;
+let Self = function wCommunicatorBrowserWorker( o )
 {
   return _.workpiece.construct( Self, this, arguments );
 }

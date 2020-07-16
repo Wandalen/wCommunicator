@@ -32,9 +32,9 @@ var Http, Net, SocketIo, Udp;
  * @module Tools/mid/Communicator
 */
 
-var _ = _global_.wTools;
-var Parent = null;
-var Self = function wCommunicator( o )
+let _ = _global_.wTools;
+let Parent = null;
+let Self = function wCommunicator( o )
 {
   return _.workpiece.construct( Self, this, arguments );
 }

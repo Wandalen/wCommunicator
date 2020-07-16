@@ -15,7 +15,7 @@ if( typeof module !== 'undefined' )
 
 }
 
-var _ = _global_.wTools;
+let _ = _global_.wTools;
 
 // --
 // test
@@ -257,7 +257,7 @@ buffer.timeOut = 30000;
 // declare
 // --
 
-var Self =
+let Self =
 {
 
   name : 'CommunicatorAbstract',
