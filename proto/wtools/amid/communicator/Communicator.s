@@ -8,8 +8,7 @@
 */
 
 /**
- * @file Communicator.s.
- */
+ *  */
 
 if( typeof module !== 'undefined' )
 {
