@@ -1,4 +1,5 @@
- ( function _Abstract_s_() {
+( function _Abstract_s_()
+{
 
 'use strict';
 
@@ -10,7 +11,7 @@ if( typeof module !== 'undefined' )
   _.include( 'wConsequence' );
   _.include( 'wCopyable' );
   _.include( 'wCommunicator' );
-  _.include( 'wBaseEncoder' );
+  // _.include( 'wBaseEncoder' );
 
 }
 
@@ -20,7 +21,8 @@ var Http, Net, SocketIo, Udp;
 
 let _ = _global_.wTools;
 let Parent = null;
-let Self = function wCommunicatorProtocolAbstract( o )
+let Self = wCommunicatorProtocolAbstract;
+function wCommunicatorProtocolAbstract( o )
 {
   return _.workpiece.construct( Self, this, arguments );
 }
@@ -134,18 +136,18 @@ function _formStreams()
     self._bufferSendAct = function _bufferSendAct( data )
     {
       _.assert( arguments.length === 1, 'Expects single argument' );
-      /* var data = this._packetSendBegin({ data : data }); */
+      /* var data = this._packetSendBegin({ data }); */
       this.bufferStreamLike.write( _.bufferNodeFrom( data ) );
     }
 
     self.bufferStreamLike.on( 'data', function( msg )
     {
-      logger.log( com.nameTitle,'bufferStreamLike:data',msg );
+      logger.log( com.nameTitle, 'bufferStreamLike:data', msg );
     });
 
     self.bufferStreamLike.on( 'message', function( msg )
     {
-      logger.log( com.nameTitle,'bufferStreamLike:message',msg );
+      logger.log( com.nameTitle, 'bufferStreamLike:message', msg );
     });
 
     self.bufferStreamLike.on( 'readable', function()
@@ -154,19 +156,19 @@ function _formStreams()
 
     self.bufferStreamLike.on( 'error', function( err )
     {
-      self._errorReceive({ err : err });
+      self._errorReceive({ err });
     });
 
     self.bufferStreamLike.on( 'finish', function()
     {
       if( com.verbosity > 1 )
-      logger.log( com.nameTitle,'bufferStreamLike:finish' );
+      logger.log( com.nameTitle, 'bufferStreamLike:finish' );
     });
 
     self.bufferStreamLike.on( 'end', function()
     {
       if( com.verbosity > 1 )
-      logger.log( com.nameTitle,'bufferStreamLike:end' );
+      logger.log( com.nameTitle, 'bufferStreamLike:end' );
     });
 
   }
@@ -193,7 +195,7 @@ function _formStreams()
     data = _.toJson( data ) + self._streamDelimeterString;
     this.primeStreamLike.write( data );
   }
-  else _.assert( 0,'prime stream does not has "send" neither "write"' );
+  else _.assert( 0, 'prime stream does not has "send" neither "write"' );
 
   debugger;
   if( !self.bufferStreamLike )
@@ -202,71 +204,71 @@ function _formStreams()
 
   self.primeStreamLike.on( 'data', function( data )
   {
-    self._rawReceive({ data : data });
+    self._rawReceive({ data });
   });
 
   self.primeStreamLike.on( 'message', function( packet )
   {
-    self._packetReceive({ packet : packet });
+    self._packetReceive({ packet });
   });
 
   self.primeStreamLike.on( 'error', function( err )
   {
-    self._errorReceive({ err : err });
+    self._errorReceive({ err });
   });
 
   self.primeStreamLike.on( 'disconnect', function()
   {
     if( com.verbosity > 1 )
-    logger.log( com.nameTitle,'disconnect' );
+    logger.log( com.nameTitle, 'disconnect' );
     self._terminateReceive();
   });
 
   self.primeStreamLike.on( 'close', function()
   {
     if( com.verbosity > 1 )
-    logger.log( com.nameTitle,'close' );
+    logger.log( com.nameTitle, 'close' );
     self._terminateReceive();
   });
 
   self.primeStreamLike.on( 'connect', function()
   {
     if( com.verbosity > 1 )
-    logger.log( com.nameTitle,'connect' );
+    logger.log( com.nameTitle, 'connect' );
   });
 
   self.primeStreamLike.on( 'drain', function()
   {
     if( com.verbosity > 1 )
-    logger.log( com.nameTitle,'drain' );
+    logger.log( com.nameTitle, 'drain' );
   });
 
   self.primeStreamLike.on( 'end', function()
   {
     if( com.verbosity > 1 )
-    logger.log( com.nameTitle,'end' );
+    logger.log( com.nameTitle, 'end' );
   });
 
   self.primeStreamLike.on( 'lookup', function()
   {
     if( com.verbosity > 1 )
-    logger.log( com.nameTitle,'lookup' );
+    logger.log( com.nameTitle, 'lookup' );
   });
 
   self.primeStreamLike.on( 'timeout', function()
   {
     if( com.verbosity > 1 )
-    logger.log( com.nameTitle,'timeout' );
+    logger.log( com.nameTitle, 'timeout' );
   });
 
-// Event: 'close'
-// Event: 'connect'
-// Event: 'data'
-// Event: 'drain'
-// Event: 'end'
-// Event: 'error'
-// Event: 'lookup'
-// Event: 'timeout'
+  // Event: 'close'
+  // Event: 'connect'
+  // Event: 'data'
+  // Event: 'drain'
+  // Event: 'end'
+  // Event: 'error'
+  // Event: 'lookup'
+  // Event: 'timeout'
 
 }
 
@@ -298,15 +300,17 @@ function _formTempSend()
   {
     debugger;
 
+    var i = 0;
+
     _.assert( self._packetSendAct !== _packetSendAct );
-    for( var i = 0 ; i < self._packetSendLater.length ; i++ )
+    for( i = 0 ; i < self._packetSendLater.length ; i++ )
     self._packetSendAct( self._packetSendLater[ i ] );
-    self._packetSendLater.splice( 0,self._packetSendLater.length );
+    self._packetSendLater.splice( 0, self._packetSendLater.length );
 
     _.assert( self._bufferSendAct !== _bufferSendAct );
-    for( var i = 0 ; i < self._bufferSendLater.length ; i++ )
+    for( i = 0 ; i < self._bufferSendLater.length ; i++ )
     self._bufferSendAct( self._bufferSendLater[ i ] );
-    self._bufferSendLater.splice( 0,self._bufferSendLater.length );
+    self._bufferSendLater.splice( 0, self._bufferSendLater.length );
 
   });
 
@@ -341,7 +345,7 @@ function _bufferSendWithTheSameStream( buffer )
   var com = self.communicator;
   _.assert( arguments.length === 1, 'Expects single argument' );
 
-  self._packetSpecialSend( 'buffer',{ size : buffer.byteLength, cls : buffer.constructor.name } );
+  self._packetSpecialSend( 'buffer', { size : buffer.byteLength, cls : buffer.constructor.name } );
 
   self.primeStreamLike.write( _.bufferNodeFrom( buffer ) );
 }
@@ -370,7 +374,7 @@ function _packetSpecialSend( o )
   _.assert( o.channel !== undefined && o.channel !== null );
   _.assert( o.data !== undefined );
   _.assert( arguments.length === 1 || arguments.length === 2 );
-  _.routineOptions( _packetSpecialSend,o );
+  _.routineOptions( _packetSpecialSend, o );
 
   o.subchannel = 'packetSpecial';
   self._packetSend( o );
@@ -418,7 +422,7 @@ function _packetSend( o )
   _.assert( arguments.length === 1, 'Expects single argument' );
   _.assert( o.channel !== undefined && o.channel !== null );
   _.assert( o.data !== undefined );
-  _.routineOptions( _packetSend,o );
+  _.routineOptions( _packetSend, o );
 
   self._packetCounter += 1;
 
@@ -461,9 +465,9 @@ function _packetSendBegin( o )
 {
   var self = this;
   var com = self.communicator;
-  _.routineOptions( _packetSendBegin,o );
+  _.routineOptions( _packetSendBegin, o );
   _.assert( arguments.length === 1, 'Expects single argument' );
-  _.assert( _.strDefined( o.channel ),'Expects string { channel }, but got',_.strType( o.channel ) );
+  _.assert( _.strDefined( o.channel ), 'Expects string { channel }, but got', _.strType( o.channel ) );
   return o;
 }
 
@@ -483,12 +487,12 @@ function _rawReceive( o )
   var self = this;
   var com = self.communicator;
 
-  _.routineOptions( _rawReceive,o );
+  _.routineOptions( _rawReceive, o );
   _.assert( arguments.length === 1, 'Expects single argument' );
   _.assert( _.bufferNodeIs( o.data ) );
 
   o.data = _.bufferBytesGet( o.data );
-  self._streamBuffer = _.bufferJoin( self._streamBuffer , o.data );
+  self._streamBuffer = _.bufferJoin( self._streamBuffer, o.data );
 
   self._rawReceivedProceed();
 
@@ -514,7 +518,7 @@ function _rawReceivedProceed()
     if( self._receivingBuffer )
     return self._rawRecievedBufferProceed();
 
-    var packets = _.bufferCutOffLeft( self._streamBuffer , self._streamDelimeterBuffer );
+    var packets = _.bufferCutOffLeft( self._streamBuffer, self._streamDelimeterBuffer );
     self._streamBuffer = packets[ packets.length-1 ];
 
     while( packets[ 0 ] )
@@ -523,26 +527,26 @@ function _rawReceivedProceed()
       var packet = packets[ 0 ];
       _.assert( packet.length );
 
-      var packet = self._packetReceive({ format : 'buffer', packet : packet });
+      var packet = self._packetReceive({ format : 'buffer', packet });
       if( packet )
       if( packet.channel === 'buffer' && packet.subchannel === 'packetSpecial' )
       {
-        self._receivingBuffer = _.mapExtend( null,packet,packet.data );
+        self._receivingBuffer = _.mapExtend( null, packet, packet.data );
         delete self._receivingBuffer.data;
-        logger.log( 'receiving\n',self._receivingBuffer );
+        logger.log( 'receiving\n', self._receivingBuffer );
         self._rawRecievedBufferProceed();
         return;
       }
 
-      var packets = _.bufferCutOffLeft( self._streamBuffer , self._streamDelimeterBuffer );
-      self._streamBuffer = packets[ packets.length-1 ];
+      var packets1 = _.bufferCutOffLeft( self._streamBuffer, self._streamDelimeterBuffer );
+      self._streamBuffer = packets1[ packets1.length-1 ];
 
     }
 
   }
   catch( err )
   {
-    return self._errorReceive({ err : err });
+    return self._errorReceive({ err });
   }
 
 }
@@ -562,7 +566,7 @@ function _rawRecievedBufferProceed()
 
   _.assert( arguments.length === 0, 'Expects no arguments' );
   _.assert( receiving );
-  _.assert( _global_[ receiving.cls ],'unknown type of buffer',receiving.cls );
+  _.assert( _global_[ receiving.cls ], 'unknown type of buffer', receiving.cls );
   _.assert( _.bufferBytesIs( self._streamBuffer ) );
 
   if( self._streamBuffer.length < receiving.size )
@@ -570,13 +574,13 @@ function _rawRecievedBufferProceed()
 
   self._receivingBuffer = null;
 
-  var buffer = self._streamBuffer.subarray( 0,receiving.size );
+  var buffer = self._streamBuffer.subarray( 0, receiving.size );
   self._streamBuffer = self._streamBuffer.subarray( receiving.size )
 
   if( buffer.constructor.name !== receiving.cls )
-  buffer = _.bufferRetype( buffer , _global_[ receiving.cls ] );
+  buffer = _.bufferRetype( buffer, _global_[ receiving.cls ] );
 
-  self._bufferReceive({ buffer : buffer });
+  self._bufferReceive({ buffer });
   self._rawReceivedProceed();
 
 }
@@ -588,7 +592,7 @@ function _bufferReceive( o )
   var self = this;
   var com = self.communicator;
 
-  _.routineOptions( _bufferReceive,o );
+  _.routineOptions( _bufferReceive, o );
 
   com.eventGive({ kind : 'buffer', buffer : o.buffer });
 
@@ -609,7 +613,7 @@ function _packetReceive( o )
   try
   {
 
-    _.routineOptions( _packetReceive,o );
+    _.routineOptions( _packetReceive, o );
     _.assert( arguments.length === 1, 'Expects single argument' );
 
     if( o.format === 'buffer' )
@@ -628,9 +632,9 @@ function _packetReceive( o )
 
     if( com.verbosity > 1 )
     if( o.packet.subchannel === 'packetSpecial' )
-    logger.log( com.nameTitle,':', 'packet received in channel',_.strQuote( o.packet.channel ),'and subchannel',_.strQuote( o.packet.subchannel ) );
+    logger.log( com.nameTitle, ':', 'packet received in channel', _.strQuote( o.packet.channel ), 'and subchannel', _.strQuote( o.packet.subchannel ) );
     else
-    logger.log( com.nameTitle,':', 'packet received in channel',_.strQuote( o.packet.channel ) );
+    logger.log( com.nameTitle, ':', 'packet received in channel', _.strQuote( o.packet.channel ) );
 
     // if( o.packet.channel === 'packetSpecial' )
     // {
@@ -642,7 +646,7 @@ function _packetReceive( o )
     _.assert( !com.specialChannels[ o.packet.channel ] );
 
     if( com.channels[ o.packet.channel ] )
-    com.channels[ o.packet.channel ].call( self,o.packet.data,o.packet.channel );
+    com.channels[ o.packet.channel ].call( self, o.packet.data, o.packet.channel );
 
     var e = Object.create( null );
     e.subchannel = o.packet.subchannel;
@@ -665,10 +669,10 @@ function _packetReceive( o )
   }
   catch( err )
   {
-    err = _.err( err,'\n',o.packet );
+    err = _.err( err, '\n', o.packet );
     if( com.verbosity )
     _.errLogOnce( err );
-    self._errorReceive({ err : err });
+    self._errorReceive({ err });
     return null;
   }
 
@@ -687,10 +691,10 @@ function _packetSpecialReceive( o )
   var self = this;
   var com = self.communicator;
 
-  _.routineOptions( _packetSpecialReceive,o );
+  _.routineOptions( _packetSpecialReceive, o );
   _.assert( arguments.length === 1, 'Expects single argument' );
-  _.assert( o.packet.subchannel === 'packetSpecial',o.packet );
-  _.assert( _.strIs( o.packet.subchannel ),o.packet );
+  _.assert( o.packet.subchannel === 'packetSpecial', o.packet );
+  _.assert( _.strIs( o.packet.subchannel ), o.packet );
 
   com.eventGive
   ({
@@ -717,10 +721,10 @@ function _errorReceive( o )
 
   com.errors.push( null );
 
-  _.routineOptions( _errorReceive,o );
+  _.routineOptions( _errorReceive, o );
   _.assert( arguments.length === 1, 'Expects single argument' );
 
-  var err = _.err( com.nameTitle, ':', 'error\n',o.err );
+  var err = _.err( com.nameTitle, ':', 'error\n', o.err );
 
   if( com.verbosity )
   err = _.errLogOnce( err );
@@ -843,50 +847,50 @@ var Forbids =
 var Proto =
 {
 
-  init : init,
+  init,
 
-  unform : unform,
-  _unform : _unform,
+  unform,
+  _unform,
 
-  form : form,
+  form,
 
-  _formMaster : _formMaster,
-  _formSlave : _formSlave,
+  _formMaster,
+  _formSlave,
 
-  _formStreams : _formStreams,
-  _formTempSend : _formTempSend,
+  _formStreams,
+  _formTempSend,
 
   //
 
-  _bufferSendWithTheSameStream : _bufferSendWithTheSameStream,
-  _bufferSend : _bufferSend,
+  _bufferSendWithTheSameStream,
+  _bufferSend,
 
-  _packetSpecialSend : _packetSpecialSend,
+  _packetSpecialSend,
 
-  packetSend : packetSend,
-  _packetSend : _packetSend,
-  _packetSendBegin : _packetSendBegin,
+  packetSend,
+  _packetSend,
+  _packetSendBegin,
 
-  _rawReceive : _rawReceive,
-  _rawReceivedProceed : _rawReceivedProceed,
-  _rawRecievedBufferProceed : _rawRecievedBufferProceed,
-  _bufferReceive : _bufferReceive,
-  _packetReceive : _packetReceive,
-  _packetSpecialReceive : _packetSpecialReceive,
-  _errorReceive : _errorReceive,
-  _terminateReceive : _terminateReceive,
-  _terminateReceiveBefore : _terminateReceiveBefore,
-  _terminateReceiveAfter : _terminateReceiveAfter,
+  _rawReceive,
+  _rawReceivedProceed,
+  _rawRecievedBufferProceed,
+  _bufferReceive,
+  _packetReceive,
+  _packetSpecialReceive,
+  _errorReceive,
+  _terminateReceive,
+  _terminateReceiveBefore,
+  _terminateReceiveAfter,
 
 
   // relations
 
 
-  Composes : Composes,
-  Aggregates : Aggregates,
-  Associates : Associates,
-  Restricts : Restricts,
-  Statics : Statics,
+  Composes,
+  Aggregates,
+  Associates,
+  Restricts,
+  Statics,
 
 }
 
@@ -901,7 +905,7 @@ _.classDeclare
 
 _.Copyable.mixin( Self );
 
-_.accessor.forbid( Self.prototype,Forbids );
+_.accessor.forbid( Self.prototype, Forbids );
 
 //
 

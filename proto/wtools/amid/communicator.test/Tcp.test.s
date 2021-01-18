@@ -1,6 +1,9 @@
-( function _Tcp_test_s_( ) {
+( function _Tcp_test_s_( )
+{
 
-'use strict'; /*hhh*/
+/*hhh*/
+
+'use strict';
 
 // !!! disabled because it is experimental functionality
 // return;
@@ -13,7 +16,7 @@ return;
 if( typeof module !== 'undefined' )
 {
 
-  let _ = require( '../../../../wtools/Tools.s' );
+  let _ = require( '../../Tools.s' );
 
   _.include( 'wTesting' );
   _.include( 'wCommunicator' );
