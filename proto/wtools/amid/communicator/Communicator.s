@@ -409,7 +409,7 @@ function _formSocketIoSlave()
       {
         global.onerror = onEvent;
       }
-      else throw 'Unexpected eventKind : ' + eventKind;
+      else throw _.err( 'Unexpected eventKind : ' + eventKind );
     }
 
     c.on( 'connect', _.routineJoin( self, self.slaveConnectEnd ) );
@@ -460,7 +460,7 @@ function _formNodeIpcSlave()
     {
       global.onerror = onEvent;
     }
-    else throw 'Unexpected eventKind : ' + eventKind;
+    else throw _.err( 'Unexpected eventKind : ' + eventKind );
   }
 
   Ipc.config.id = '_slave';
