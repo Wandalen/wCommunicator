@@ -8,7 +8,7 @@ Sketch. Strategy for two points communication. Communicator abstracts details of
 git clone https://github.com/Wandalen/wCommunicator
 cd wCommunicator
 npm install
-node sample/Sample.s
+node sample/trivial/Sample.s
 ```
 
 ## To add to your project
