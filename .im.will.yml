@@ -4,6 +4,9 @@ submodule :
   wTools :
     path : npm:///wTools
     enabled : 0 # submodule
+  wCopyable :
+    path : npm:///wCopyable
+    enabled : 0 # submodule
   wcommunicator :
     path : hd://.
     enabled : 0 # submodule
