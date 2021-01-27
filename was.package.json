@@ -16,7 +16,7 @@
   {
     "url" : "https://github.com/Wandalen/wCommunicator/issues"
   },
-  "dependencies" : { "wTools" : "", "wCopyable": "alpha" },
+  "dependencies" : { "wTools" : "", "wCopyable": "alpha", "wEventHandler": "alpha" },
   "devDependencies" : { "wTesting" : "", "wcommunicator" : "file:.", "eslint" : "7.1.0" },
   "keywords" : [ "wTools" ]
 }
