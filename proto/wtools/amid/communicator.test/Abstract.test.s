@@ -1,4 +1,5 @@
-( function _Abstract_test_s_( ) {
+( function _Abstract_test_s_( )
+{
 
 'use strict';
 
@@ -26,8 +27,8 @@ function trivial( test )
   var self = this;
   var bits = 13;
 
-  var expectedByMaster = [ 'from slave a','from slave b',_.strDup( 'from slave c',1 << bits ),null ];
-  var expectedBySlave = [ 'from master a','from master b',_.strDup( 'from master c',1 << bits ),null ];
+  var expectedByMaster = [ 'from slave a', 'from slave b', _.strDup( 'from slave c', 1 << bits ), null ];
+  var expectedBySlave = [ 'from master a', 'from master b', _.strDup( 'from master c', 1 << bits ), null ];
 
   test.case = 'trivial';
 
@@ -35,7 +36,7 @@ function trivial( test )
 
   var con = new _.Consequence().give( 1 );
 
-  con.finally( function( err,arg )
+  con.finally( function( err, arg )
   {
     test.identical( master.errors.length, 0 );
     test.identical( slave.errors.length, 0 );
@@ -53,14 +54,14 @@ function trivial( test )
   master.form();
   master.packetSend( 'from master a' );
   master.packetSend( 'from master b' );
-  master.packetSend( _.strDup( 'from master c',1 << bits ) );
+  master.packetSend( _.strDup( 'from master c', 1 << bits ) );
   master.packetSend( null );
 
   master.on( 'terminateReceived', () => con.take( null ) );
   master.on( 'message', function( e )
   {
-    test.identical( e.data,expectedByMaster[ 0 ] );
-    expectedByMaster.splice( 0,1 );
+    test.identical( e.data, expectedByMaster[ 0 ] );
+    expectedByMaster.splice( 0, 1 );
     if( expectedBySlave.length === 0 && expectedByMaster.length === 0 )
     {
       slave.unform();
@@ -73,7 +74,7 @@ function trivial( test )
   function slaveRun()
   {
 
-    // var expectedBySlave = [ 'from master a','from master b',_.strDup( 'from master c',1 << bits ),null ];
+    // var expectedBySlave = [ 'from master a', 'from master b', _.strDup( 'from master c', 1 << bits ), null ];
     // var bits = 13;
 
     var slave = new wCommunicator
@@ -86,7 +87,7 @@ function trivial( test )
     slave.form();
     slave.packetSend( 'from slave a' );
     slave.packetSend( 'from slave b' );
-    slave.packetSend( _.strDup( 'from slave c',1 << bits ) );
+    slave.packetSend( _.strDup( 'from slave c', 1 << bits ) );
     slave.packetSend( null );
 
     slave.on( 'terminateReceived', function()
@@ -98,8 +99,8 @@ function trivial( test )
     slave.on( 'message', function( e )
     {
       if( typeof test !== 'undefined' )
-      test.identical( e.data,expectedBySlave[ 0 ] );
-      expectedBySlave.splice( 0,1 );
+      test.identical( e.data, expectedBySlave[ 0 ] );
+      expectedBySlave.splice( 0, 1 );
       if( expectedBySlave.length === 0 && expectedByMaster.length === 0 )
       {
         slave.unform();
@@ -124,9 +125,9 @@ function buffer( test )
   var self = this;
 
   var expectedPacketsByMaster = [ 'from slave a' ];
-  var expectedBuffersByMaster = [ new F32x([ 1,2,3 ]), new F32x([ 4,5,6 ]) ];
+  var expectedBuffersByMaster = [ new F32x([ 1, 2, 3 ]), new F32x([ 4, 5, 6 ]) ];
   var expectedPacketsBySlave = [ 'from master a' ];
-  var expectedBuffersBySlave = [ new F32x([ 7,8,9 ]), new F32x([ 10,11,12 ]), new F32x([ 13,14,15 ]) ];
+  var expectedBuffersBySlave = [ new F32x([ 7, 8, 9 ]), new F32x([ 10, 11, 12 ]), new F32x([ 13, 14, 15 ]) ];
 
   test.case = 'buffer';
 
@@ -134,7 +135,7 @@ function buffer( test )
 
   var con = new _.Consequence().give( 1 );
 
-  con.finally( function( err,arg )
+  con.finally( function( err, arg )
   {
     test.identical( expectedPacketsByMaster.length, 0 );
     test.identical( expectedBuffersByMaster.length, 0 );
@@ -149,10 +150,10 @@ function buffer( test )
   {
     if
     (
-      expectedPacketsBySlave.length === 0 &&
-      expectedBuffersByMaster.length === 0 &&
-      expectedPacketsByMaster.length === 0 &&
-      expectedBuffersBySlave.length === 0
+      expectedPacketsBySlave.length === 0
+      && expectedBuffersByMaster.length === 0
+      && expectedPacketsByMaster.length === 0
+      && expectedBuffersBySlave.length === 0
     )
     {
       slave.unform();
@@ -172,9 +173,9 @@ function buffer( test )
   debugger;
   master.form();
 
-  master.bufferSend( new F32x([ 7,8,9 ]) );
-  master.bufferSend( new F32x([ 10,11,12 ]) );
-  master.bufferSend( new F32x([ 13,14,15 ]) );
+  master.bufferSend( new F32x([ 7, 8, 9 ]) );
+  master.bufferSend( new F32x([ 10, 11, 12 ]) );
+  master.bufferSend( new F32x([ 13, 14, 15 ]) );
 
   master.packetSend( 'from master a' );
 
@@ -189,23 +190,22 @@ function buffer( test )
   .on( 'terminateReceived', () => con.take( null ) )
   .on( 'message', function( e )
   {
-    test.identical( e.data , expectedPacketsByMaster[ 0 ] );
-    expectedPacketsByMaster.splice( 0,1 );
+    test.identical( e.data, expectedPacketsByMaster[ 0 ] );
+    expectedPacketsByMaster.splice( 0, 1 );
     maybeEnd();
   })
   .on( 'packetSpecial', function( e )
   {
     debugger;
-    logger.log( 'packetSpecial',e );
+    logger.log( 'packetSpecial', e );
   })
   .on( 'buffer', function( e )
   {
-    logger.log( 'buffer',e.buffer );
-    test.identical( e.buffer,expectedBuffersByMaster[ 0 ] );
-    expectedBuffersByMaster.splice( 0,1 );
+    logger.log( 'buffer', e.buffer );
+    test.identical( e.buffer, expectedBuffersByMaster[ 0 ] );
+    expectedBuffersByMaster.splice( 0, 1 );
     maybeEnd();
-  })
-  ;
+  });
 
   /* */
 
@@ -219,8 +219,8 @@ function buffer( test )
   slave.form();
   slave.packetSend( 'from slave a' );
 
-  slave.bufferSend( new F32x([ 1,2,3 ]) );
-  slave.bufferSend( new F32x([ 4,5,6 ]) );
+  slave.bufferSend( new F32x([ 1, 2, 3 ]) );
+  slave.bufferSend( new F32x([ 4, 5, 6 ]) );
 
   slave
   .on( 'terminateReceived', function()
@@ -231,22 +231,21 @@ function buffer( test )
   })
   .on( 'packetSpecial', function( e )
   {
-    logger.log( 'packetSpecial',e );
+    logger.log( 'packetSpecial', e );
   })
   .on( 'message', function( e )
   {
-    test.identical( e.data,expectedPacketsBySlave[ 0 ] );
-    expectedPacketsBySlave.splice( 0,1 );
+    test.identical( e.data, expectedPacketsBySlave[ 0 ] );
+    expectedPacketsBySlave.splice( 0, 1 );
     maybeEnd();
   })
   .on( 'buffer', function( e )
   {
-    logger.log( 'buffer',e.buffer );
-    test.identical( e.buffer,expectedBuffersBySlave[ 0 ] );
-    expectedBuffersBySlave.splice( 0,1 );
+    logger.log( 'buffer', e.buffer );
+    test.identical( e.buffer, expectedBuffersBySlave[ 0 ] );
+    expectedBuffersBySlave.splice( 0, 1 );
     maybeEnd();
-  })
-  ;
+  });
 
   return con;
 }
@@ -268,8 +267,8 @@ let Self =
   tests :
   {
 
-    trivial : trivial,
-    buffer : buffer,
+    trivial,
+    buffer,
 
   },
 

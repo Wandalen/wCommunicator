@@ -1,4 +1,5 @@
- ( function _BrowserWorker_s_() {
+( function _BrowserWorker_s_()
+{
 
 'use strict';
 
@@ -18,7 +19,8 @@ if( typeof module !== 'undefined' )
 
 let _ = _global_.wTools;
 let Parent = _.CommunicatorProtocol.Abstract;
-let Self = function wCommunicatorBrowserWorker( o )
+let Self = wCommunicatorBrowserWorker;
+function wCommunicatorBrowserWorker( o )
 {
   return _.workpiece.construct( Self, this, arguments );
 }
@@ -33,7 +35,7 @@ function init( o )
 {
   var self = this;
 
-  Parent.prototype.init.apply( self,arguments );
+  Parent.prototype.init.apply( self, arguments );
 
 }
 
@@ -87,7 +89,7 @@ function _formMaster()
   // var server = self._server = Net.createServer( function( socket )
   // {
   //   // if( com.verbosity > 1 )
-  //   // logger.log( com.nameTitle,': new TCP socket',socket );
+  //   // logger.log( com.nameTitle, ': new TCP socket', socket );
   //
   //   _.assert( !self.primeStreamLike );
   //   // self.primeStreamLike2 = socket;
@@ -100,7 +102,7 @@ function _formMaster()
   //
   // var port = com.portGet();
   // var host = com.hostGet();
-  // _.assert( port,'Expects port, but got',_.strType( port ) );
+  // _.assert( port, 'Expects port, but got', _.strType( port ) );
   //
   // try
   // {
@@ -142,7 +144,7 @@ function _formSlave()
   // var port = com.portGet();
   // var host = com.hostGet();
   //
-  // _.assert( port,'Expects port, but got',_.strType( port ) );
+  // _.assert( port, 'Expects port, but got', _.strType( port ) );
   //
   // // logger.log( 'host',host );
   // // logger.log( 'port',port );
@@ -186,10 +188,10 @@ function _packetSendBegin( o )
 
   debugger;
 
-  Parent.prototype._packetSendBegin.call( self,o );
+  Parent.prototype._packetSendBegin.call( self, o );
 
   if( self.primeStreamLike )
-  _.assert( !self.primeStreamLike.destroyed,'socket destroyed' );
+  _.assert( !self.primeStreamLike.destroyed, 'socket destroyed' );
 
   return o;
 }
@@ -202,7 +204,7 @@ _packetSendBegin.defaults =
 
 //
 
-function packetSend( channel,data )
+function packetSend( channel, data )
 {
   var self = this;
   var o;
@@ -210,12 +212,12 @@ function packetSend( channel,data )
   debugger;
 
   if( arguments.length === 2 )
-  o = { channel : channel, data : data }
+  o = { channel, data }
 
   _.assert( o.channel !== undefined && o.channel !== null );
   _.assert( o.data !== undefined );
   _.assert( arguments.length === 1 || arguments.length === 2 );
-  _.routineOptions( packetSend,o );
+  _.routineOptions( packetSend, o );
 
   var packet = { channel : o.channel, data : o.data };
   packet = self._packetSendBegin( packet );
@@ -232,7 +234,7 @@ packetSend.defaults =
 
 //
 
-function packetSpecialSend( subchannel,data )
+function packetSpecialSend( subchannel, data )
 {
   var self = this;
   var o;
@@ -240,15 +242,15 @@ function packetSpecialSend( subchannel,data )
   debugger;
 
   if( arguments.length === 2 )
-  o = { subchannel : subchannel, data : data }
+  o = { subchannel, data }
 
   _.assert( o.subchannel !== undefined && o.subchannel !== null );
   _.assert( o.data !== undefined );
   _.assert( arguments.length === 1 || arguments.length === 2 );
-  _.routineOptions( packetSpecialSend,o );
+  _.routineOptions( packetSpecialSend, o );
 
   var packet = { subchannel : o.subchannel, data : o.data };
-  self.packetSend( 'packetSpecial',packet );
+  self.packetSend( 'packetSpecial', packet );
 
   return self;
 }
@@ -267,7 +269,7 @@ function bufferSend( o )
 
   _.assert( o.data !== undefined );
   _.assert( arguments.length === 1, 'Expects single argument' );
-  _.routineOptions( bufferSend,o );
+  _.routineOptions( bufferSend, o );
 
   debugger;
 
@@ -313,24 +315,24 @@ var Statics =
 var Proto =
 {
 
-  init : init,
-  _unform : _unform,
+  init,
+  _unform,
 
-  _formMaster : _formMaster,
-  _formSlave : _formSlave,
+  _formMaster,
+  _formSlave,
 
-  _terminateReceiveBefore : _terminateReceiveBefore,
-  _terminateReceiveAfter : _terminateReceiveAfter,
-  _packetSendBegin : _packetSendBegin,
+  _terminateReceiveBefore,
+  _terminateReceiveAfter,
+  _packetSendBegin,
 
   // relations
 
 
-  Composes : Composes,
-  Aggregates : Aggregates,
-  Associates : Associates,
-  Restricts : Restricts,
-  Statics : Statics,
+  Composes,
+  Aggregates,
+  Associates,
+  Restricts,
+  Statics,
 
 }
 

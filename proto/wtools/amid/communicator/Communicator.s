@@ -1,4 +1,5 @@
-( function _Communicator_s_() {
+( function _Communicator_s_()
+{
 
 'use strict';
 
@@ -33,7 +34,8 @@ var Http, Net, SocketIo, Udp;
 
 let _ = _global_.wTools;
 let Parent = null;
-let Self = function wCommunicator( o )
+let Self = wCommunicator;
+function wCommunicator( o )
 {
   return _.workpiece.construct( Self, this, arguments );
 }
@@ -100,7 +102,7 @@ function form()
   if( self.url )
   {
     if( self.verbosity )
-    logger.log( 'URL :',self.url );
+    logger.log( 'URL :', self.url );
     self.url = _.uri.parse( self.url );
   }
 
@@ -184,15 +186,18 @@ function _formUdpMaster()
 
   var stream = self.primeStreamLike = Udp.createSocket( 'udp4' );
 
-  stream.on('error', (err) => {
+  stream.on('error', (err) =>
+  {
     console.log(`server error:\n${err.stack}`);
   });
 
-  stream.on('message', (msg, rinfo) => {
+  stream.on('message', (msg, rinfo) =>
+  {
     console.log(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
   });
 
-  stream.on('listening', () => {
+  stream.on('listening', () =>
+  {
     const address = stream.address();
     console.log(`server listening ${address.address}:${address.port}`);
   });
@@ -202,7 +207,7 @@ function _formUdpMaster()
 
   var port = self.url ? self.url.port : self.defaultPort;
 
-  _.assert( port,'Expects port, but got',_.strType( port ) );
+  _.assert( port, 'Expects port, but got', _.strType( port ) );
 
   stream.bind
   ({
@@ -256,7 +261,7 @@ function _formSocketIoMaster()
     port = 13000 + i;
     self.server.listen( port );
     self.path = 'http://127.0.0.1:' + ( port );
-    logger.log( 'try',self.path );
+    logger.log( 'try', self.path );
     break;
   }
   catch( err )
@@ -269,12 +274,12 @@ function _formSocketIoMaster()
   }
 
   _.assert( self.server.listening );
-  logger.log( 'listening',self.path );
+  logger.log( 'listening', self.path );
 
   /* pipe */
 
   // self._formPipeMaster();
-  // self.masterReceive( self.path,'url' );
+  // self.masterReceive( self.path, 'url' );
 
   /* SocketIo */
 
@@ -290,24 +295,24 @@ function _formSocketIoMaster()
 
   /* */
 
-  c.on( 'connect',_.routineJoin( self,masterConnectEnd ) );
-  c.on( 'disconnect',_.routineJoin( self,masterDisconnectEnd ) );
-  c.on( 'message',( packet ) => self,_packetReceive({ packet : packet }) );
-  c.on( 'error',( err ) => self._errorReceive({ err : err }) );
+  c.on( 'connect', _.routineJoin( self, masterConnectEnd ) );
+  c.on( 'disconnect', _.routineJoin( self, masterDisconnectEnd ) );
+  c.on( 'message', ( packet ) => self, _packetReceive({ packet }) );
+  c.on( 'error', ( err ) => self._errorReceive({ err }) );
 
   logger.log( '_formSocketIoMaster.end' );
 
   // self._connectedCon.take( null );
 
-/*
-SocketIo.on('connection', function(socket){
-  fs.readFile('image.png', function(err, buf){
-    // it's possible to embed binary data
-    // within arbitrarily-complex objects
-    socket.emit('image', { image : true, buffer : buf });
+  /*
+  SocketIo.on('connection', function(socket){
+    fs.readFile('image.png', function(err, buf){
+      // it's possible to embed binary data
+      // within arbitrarily-complex objects
+      socket.emit('image', { image : true, buffer : buf });
+    });
   });
-});
-*/
+  */
 
 }
 
@@ -328,13 +333,13 @@ function _formNodeIpcMaster()
     debugger;
     _.assert( !self._connection );
     self._connection = socket;
-    self.masterConnectEnd.apply( self,arguments );
+    self.masterConnectEnd.apply( self, arguments );
   }
 
-  function masterReceiveMessage( packet,socket )
+  function masterReceiveMessage( packet, socket )
   {
     _.assert( self._connection === socket );
-    self._packetReceive({ packet : packet });
+    self._packetReceive({ packet });
   }
 
   //
@@ -345,10 +350,10 @@ function _formNodeIpcMaster()
   Ipc.serve( function()
   {
 
-    Ipc.server.on( 'connect',_.routineJoin( self,masterConnectEnd ) );
-    Ipc.server.on( 'disconnect',_.routineJoin( self,masterDisconnectEnd ) );
-    Ipc.server.on( 'message',_.routineJoin( self,masterReceiveMessage ) );
-    Ipc.server.on( 'error',( err ) => self._errorReceive({ err : err }) );
+    Ipc.server.on( 'connect', _.routineJoin( self, masterConnectEnd ) );
+    Ipc.server.on( 'disconnect', _.routineJoin( self, masterDisconnectEnd ) );
+    Ipc.server.on( 'message', _.routineJoin( self, masterReceiveMessage ) );
+    Ipc.server.on( 'error', ( err ) => self._errorReceive({ err }) );
 
   });
 
@@ -364,7 +369,7 @@ function _formSocketIoSlave()
   var con = new _.Consequence();
   function emptyFunction() {};
 
-  self.provisional( 'workerMessage',function( e )
+  self.provisional( 'workerMessage', function( e )
   {
 
     debugger;
@@ -383,7 +388,7 @@ function _formSocketIoSlave()
     if( 0 )
     self.logConnection();
     if( 0 )
-    _.time.out( 3000,function()
+    _.time.out( 3000, function()
     {
       self.logConnection();
     });
@@ -404,20 +409,20 @@ function _formSocketIoSlave()
       {
         global.onerror = onEvent;
       }
-      else throw 'Unexpected eventKind : ' + eventKind;
+      else throw _.err( 'Unexpected eventKind : ' + eventKind );
     }
 
-    c.on( 'connect',_.routineJoin( self,self.slaveConnectEnd ) );
-    c.on( 'disconnect',_.routineJoin( self,self.slaveDisconnectEnd ) );
-    c.on( 'message',( packet ) => self._packetReceive({ packet : packet }) );
+    c.on( 'connect', _.routineJoin( self, self.slaveConnectEnd ) );
+    c.on( 'disconnect', _.routineJoin( self, self.slaveDisconnectEnd ) );
+    c.on( 'message', ( packet ) => self._packetReceive({ packet }) );
 
-    // c.on( 'error',_.routineJoin( self,self.slaveReceiveError ) );
-    // c.on( 'connect_error',_.routineJoin( self,self.slaveReceiveError ) );
-    // c.on( 'connect_timeout',_.routineJoin( self,self.slaveReceiveError ) );
+    // c.on( 'error', _.routineJoin( self, self.slaveReceiveError ) );
+    // c.on( 'connect_error', _.routineJoin( self, self.slaveReceiveError ) );
+    // c.on( 'connect_timeout', _.routineJoin( self, self.slaveReceiveError ) );
 
-    c.on( 'error',( err ) => self._errorReceive({ err : err }) );
-    c.on( 'connect_error',( err ) => self._errorReceive({ err : err }) );
-    c.on( 'connect_timeout',( err ) => self._errorReceive({ err : err }) );
+    c.on( 'error', ( err ) => self._errorReceive({ err }) );
+    c.on( 'connect_error', ( err ) => self._errorReceive({ err }) );
+    c.on( 'connect_timeout', ( err ) => self._errorReceive({ err }) );
 
     global.postMessage( 'hello from _slave' );
 
@@ -455,7 +460,7 @@ function _formNodeIpcSlave()
     {
       global.onerror = onEvent;
     }
-    else throw 'Unexpected eventKind : ' + eventKind;
+    else throw _.err( 'Unexpected eventKind : ' + eventKind );
   }
 
   Ipc.config.id = '_slave';
@@ -466,12 +471,12 @@ function _formNodeIpcSlave()
     'master',
     function()
     {
-      Ipc.of.master.on( 'connect',_.routineJoin( self,self.slaveConnectEnd ) );
-      Ipc.of.master.on( 'disconnect',_.routineJoin( self,self.slaveDisconnectEnd ) );
-      Ipc.of.master.on( 'message',() => self._packetReceive( packet ) );
-      /*Ipc.of.master.on( 'data',_.routineJoin( self,self.slaveReceivedPacket ) );*/
-      // Ipc.of.master.on( 'error',_.routineJoin( self,self.slaveReceiveError ) );
-      Ipc.of.master.on( 'error',( err ) => self._errorReceive({ err : err }) );
+      Ipc.of.master.on( 'connect', _.routineJoin( self, self.slaveConnectEnd ) );
+      Ipc.of.master.on( 'disconnect', _.routineJoin( self, self.slaveDisconnectEnd ) );
+      Ipc.of.master.on( 'message', () => self._packetReceive( packet ) );
+      /*Ipc.of.master.on( 'data', _.routineJoin( self, self.slaveReceivedPacket ) );*/
+      // Ipc.of.master.on( 'error', _.routineJoin( self, self.slaveReceiveError ) );
+      Ipc.of.master.on( 'error', ( err ) => self._errorReceive({ err }) );
       con.take( null );
     }
   );
@@ -491,11 +496,11 @@ function _formNodeIpcSlave()
  * @module Tools/mid/Communicator
 */
 
-function packetSend( channel,data )
+function packetSend( channel, data )
 {
   var self = this;
   var protocolProvider = self.protocolProvider;
-  protocolProvider.packetSend.apply( protocolProvider,arguments );
+  protocolProvider.packetSend.apply( protocolProvider, arguments );
   return self;
 }
 
@@ -517,11 +522,11 @@ packetSend.defaults =
  * @module Tools/mid/Communicator
 */
 
-function packetSpecialSend( subchannel,data )
+function packetSpecialSend( subchannel, data )
 {
   var self = this;
   var protocolProvider = self.protocolProvider;
-  protocolProvider._packetSpecialSend.apply( protocolProvider,arguments );
+  protocolProvider._packetSpecialSend.apply( protocolProvider, arguments );
   return self;
 }
 
@@ -553,7 +558,7 @@ function bufferSend( o )
 
   _.assert( o.buffer !== undefined );
   _.assert( arguments.length === 1, 'Expects single argument' );
-  _.routineOptions( bufferSend,o );
+  _.routineOptions( bufferSend, o );
 
   protocolProvider._bufferSend( o.buffer );
 
@@ -692,7 +697,7 @@ var Restricts =
 
 var Statics =
 {
-  specialChannels : specialChannels,
+  specialChannels,
 }
 
 var Events =
@@ -721,47 +726,47 @@ var Forbids =
 var Proto =
 {
 
-  init : init,
-  finit : finit,
+  init,
+  finit,
 
-  unform : unform,
-  form : form,
+  unform,
+  form,
 
-  _formPipeMaster : _formPipeMaster,
-  _formPipeSlave : _formPipeSlave,
+  _formPipeMaster,
+  _formPipeSlave,
 
-  _formUdpMaster : _formUdpMaster,
-  _formUdpSlave : _formUdpSlave,
-
-  //
-
-  _formSocketIoMaster : _formSocketIoMaster,
-  _formNodeIpcMaster : _formNodeIpcMaster,
-
-  _formSocketIoSlave : _formSocketIoSlave,
-  _formNodeIpcSlave : _formNodeIpcSlave,
+  _formUdpMaster,
+  _formUdpSlave,
 
   //
 
-  packetSend : packetSend,
-  packetSpecialSend : packetSpecialSend,
-  bufferSend : bufferSend,
+  _formSocketIoMaster,
+  _formNodeIpcMaster,
+
+  _formSocketIoSlave,
+  _formNodeIpcSlave,
 
   //
 
-  protocolGet : protocolGet,
-  hostGet : hostGet,
-  portGet : portGet,
+  packetSend,
+  packetSpecialSend,
+  bufferSend,
+
+  //
+
+  protocolGet,
+  hostGet,
+  portGet,
 
   // relations
 
 
-  Composes : Composes,
-  Aggregates : Aggregates,
-  Associates : Associates,
-  Restricts : Restricts,
-  Statics : Statics,
-  Events : Events,
+  Composes,
+  Aggregates,
+  Associates,
+  Restricts,
+  Statics,
+  Events,
 
 }
 
@@ -777,7 +782,7 @@ _.classDeclare
 _.Copyable.mixin( Self );
 _.EventHandler.mixin( Self );
 
-_.accessor.forbid( Self.prototype,Forbids );
+_.accessor.forbid( Self.prototype, Forbids );
 
 //
 

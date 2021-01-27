@@ -1,4 +1,5 @@
-( function _BrowserWorker_test_s_( ) {
+( function _BrowserWorker_test_s_( )
+{
 
 'use strict';
 
@@ -56,7 +57,7 @@ var Proto =
   // verbosity : 9,
   enabled : 0,
 
-  onSuiteBegin : onSuiteBegin,
+  onSuiteBegin,
 
   context :
   {
