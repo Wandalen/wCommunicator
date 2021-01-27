@@ -22,13 +22,11 @@
     "url": "https://github.com/Wandalen/wCommunicator/issues"
   },
   "dependencies": {
-    "wTools": "alpha",
-    "wCopyable": "alpha"
+    "wTools": "alpha"
   },
   "devDependencies": {
     "eslint": "7.1.0",
-    "wTesting": "alpha",
-    "wcommunicator": "file:."
+    "wTesting": "alpha"
   },
   "keywords": [
     "wTools"
