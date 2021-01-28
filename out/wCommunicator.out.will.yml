@@ -1523,6 +1523,4 @@ module:
       ../.im.will.yml:
         hash: 47bbf11462ab63742e890c816aa241ce
         size: 5219
-      wCommunicator.out.will.yml:
-        hash: 37a64fbe6723cdbce740a59751a53c30
-        size: 39315
+      wCommunicator.out.will.yml: *ref_0
