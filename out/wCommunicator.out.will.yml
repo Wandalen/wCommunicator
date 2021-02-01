@@ -2,15 +2,12 @@ format: outwillfile-2.0
 root:
   - wCommunicator.out
 consistency:
-  wCommunicator.out.will.yml: &ref_0
-    hash: 37a64fbe6723cdbce740a59751a53c30
-    size: 39315
-  ../.ex.will.yml: &ref_1
+  ../.ex.will.yml: &ref_0
     hash: 7d46ff4554b0609b1992d2532a8f597d
     size: 1943
-  ../.im.will.yml: &ref_2
-    hash: 47bbf11462ab63742e890c816aa241ce
-    size: 5219
+  ../.im.will.yml: &ref_1
+    hash: 271d9a76a29fccfe93e20ce9e8b21b5b
+    size: 5295
 module:
   wCommunicator.out:
     about:
@@ -23,18 +20,18 @@ module:
         more portable and less platform/environment dependent.
       enabled: 1
       version: 0.4.0
-      interpreters:
+      interpreters: &ref_2
         - njs >= 10.0.0
         - chrome >= 60.0.0
         - firefox >= 60.0.0
-      keywords:
+      keywords: &ref_3
         - wTools
       license: MIT
       author: Kostiantyn Wandalen <wanalen@01.school>
-      contributors:
+      contributors: &ref_4
         - Kostiantyn Wandalen <wanalen@01.school>
       npm.name: wcommunicator
-      npm.scripts:
+      npm.scripts: &ref_5
         test: wtest .run proto/**
         docgen: wdocgen .build proto
     path:
@@ -182,6 +179,10 @@ module:
         enabled: 0
       wCopyable:
         path: npm:///wCopyable
+        autoExporting: 0
+        enabled: 0
+      wConsequence:
+        path: npm:///wConsequence
         autoExporting: 0
         enabled: 0
       wEventHandler:
@@ -713,24 +714,6 @@ module:
           content: prime
         inherit:
           - files.transpile
-      exported.proto.export:
-        opts:
-          filePath: reflector::exported.proto.export
-        criterion:
-          generated: 1
-          content: proto
-          export: 1
-        inherit:
-          - files.reflect
-      exported.files.proto.export:
-        opts:
-          filePath: reflector::exported.files.proto.export
-        criterion:
-          generated: 1
-          content: proto
-          export: 1
-        inherit:
-          - files.reflect
     build:
       proto.export:
         steps:
@@ -819,9 +802,8 @@ module:
           content: proto
           export: 1
     consistency:
-      wCommunicator.out.will.yml: *ref_0
-      ../.ex.will.yml: *ref_1
-      ../.im.will.yml: *ref_2
+      ../.ex.will.yml: *ref_0
+      ../.im.will.yml: *ref_1
   ../:
     about:
       name: wCommunicator
@@ -833,20 +815,13 @@ module:
         more portable and less platform/environment dependent.
       enabled: 1
       version: 0.4.0
-      interpreters:
-        - njs >= 10.0.0
-        - chrome >= 60.0.0
-        - firefox >= 60.0.0
-      keywords:
-        - wTools
+      interpreters: *ref_2
+      keywords: *ref_3
       license: MIT
       author: Kostiantyn Wandalen <wanalen@01.school>
-      contributors:
-        - Kostiantyn Wandalen <wanalen@01.school>
+      contributors: *ref_4
       npm.name: wcommunicator
-      npm.scripts:
-        test: wtest .run proto/**
-        docgen: wdocgen .build proto
+      npm.scripts: *ref_5
     path:
       module.willfiles:
         criterion:
@@ -962,6 +937,10 @@ module:
         enabled: 0
       wCopyable:
         path: npm:///wCopyable
+        autoExporting: 0
+        enabled: 0
+      wConsequence:
+        path: npm:///wConsequence
         autoExporting: 0
         enabled: 0
       wEventHandler:
@@ -1521,6 +1500,5 @@ module:
         hash: 7d46ff4554b0609b1992d2532a8f597d
         size: 1943
       ../.im.will.yml:
-        hash: 47bbf11462ab63742e890c816aa241ce
-        size: 5219
-      wCommunicator.out.will.yml: *ref_0
+        hash: 271d9a76a29fccfe93e20ce9e8b21b5b
+        size: 5295
