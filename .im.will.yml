@@ -7,6 +7,9 @@ submodule :
   wCopyable :
     path : npm:///wCopyable
     enabled : 0 # submodule
+  wConsequence :
+    path : npm:///wConsequence
+    enabled : 0 # submodule
   wEventHandler :
     path : npm:///wEventHandler
     enabled : 0 # submodule
