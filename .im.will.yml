@@ -13,7 +13,7 @@ submodule :
   wEventHandler :
     path : npm:///wEventHandler
     enabled : 0 # submodule
-  wCommunicator :
+  wcommunicator :
     path : hd://.
     enabled : 0 # submodule
     criterion :
