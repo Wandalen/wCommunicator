@@ -12,7 +12,7 @@ if( typeof module !== 'undefined' )
   let _ = require( '../../../wtools/Tools.s' );
 
   _.include( 'wTesting' );
-  _.include( 'wCommunicator' );
+  // _.include( 'wCommunicator' );
 
 }
 
