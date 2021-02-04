@@ -19,8 +19,8 @@ if( typeof module !== 'undefined' )
   let _ = require( '../../Tools.s' );
 
   _.include( 'wTesting' );
-  _.include( 'wCommunicator' );
-
+  // _.include( 'wCommunicator' );
+  require( './../communicator/Communicator.s' );
   require( './Abstract.test.s' );
 
 }

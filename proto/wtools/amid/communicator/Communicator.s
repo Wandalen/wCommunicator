@@ -791,7 +791,7 @@ _.CommunicatorProtocol = _.CommunicatorProtocol || Object.create( null );
 if( typeof module !== 'undefined' )
 {
 
-  require( './protocol/Abstract.s' );
+  // require( './protocol/Abstract.s' );
   require( './protocol/Tcp.s' );
 
 }
