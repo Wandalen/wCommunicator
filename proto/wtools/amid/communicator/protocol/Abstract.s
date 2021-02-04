@@ -10,7 +10,7 @@ if( typeof module !== 'undefined' )
 
   _.include( 'wConsequence' );
   _.include( 'wCopyable' );
-  _.include( 'wCommunicator' );
+  // _.include( 'wCommunicator' );
   // _.include( 'wBaseEncoder' );
 
 }

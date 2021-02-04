@@ -9,7 +9,7 @@ if( typeof module !== 'undefined' )
   let _ = require( '../../../../wtools/Tools.s' );
 
   _.include( 'wCopyable' );
-  _.include( 'wCommunicator' );
+  // _.include( 'wCommunicator' );
 
   require( './Abstract.s' );
 
