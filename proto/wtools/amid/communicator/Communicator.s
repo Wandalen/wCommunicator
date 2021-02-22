@@ -207,7 +207,7 @@ function _formUdpMaster()
 
   var port = self.url ? self.url.port : self.defaultPort;
 
-  _.assert( port, 'Expects port, but got', _.strType( port ) );
+  _.assert( port, 'Expects port, but got', _.entity.strType( port ) );
 
   stream.bind
   ({

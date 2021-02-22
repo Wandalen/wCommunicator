@@ -190,9 +190,9 @@ function _formStreams()
     _.assert( arguments.length === 1, 'Expects single argument' );
     // debugger;
     // if( !_.bufferNodeIs( data ) && !_.strIs( data ) )
-    // data = _.toJson( data );
+    // data = _.entity.exportJson( data );
     // _.assert( data instanceof U8x );
-    data = _.toJson( data ) + self._streamDelimeterString;
+    data = _.entity.exportJson( data ) + self._streamDelimeterString;
     this.primeStreamLike.write( data );
   }
   else _.assert( 0, 'prime stream does not has "send" neither "write"' );
@@ -467,7 +467,7 @@ function _packetSendBegin( o )
   var com = self.communicator;
   _.routineOptions( _packetSendBegin, o );
   _.assert( arguments.length === 1, 'Expects single argument' );
-  _.assert( _.strDefined( o.channel ), 'Expects string { channel }, but got', _.strType( o.channel ) );
+  _.assert( _.strDefined( o.channel ), 'Expects string { channel }, but got', _.entity.strType( o.channel ) );
   return o;
 }
 
