@@ -268,7 +268,6 @@ function _formSocketIoMaster()
   {
     if( i === lastPort )
     {
-      debugger;
       throw _.errLog( err );
     }
   }
@@ -285,7 +284,6 @@ function _formSocketIoMaster()
 
   // self._masterReceive = self._masterReceiveIo;
 
-  debugger;
   if( !SocketIo )
   SocketIo = require( 'socket.io' );
   var c = self._connection = SocketIo.listen( self.server );
@@ -330,7 +328,6 @@ function _formNodeIpcMaster()
 
   function masterConnectEnd( socket )
   {
-    debugger;
     _.assert( !self._connection );
     self._connection = socket;
     self.masterConnectEnd.apply( self, arguments );
@@ -372,7 +369,6 @@ function _formSocketIoSlave()
   self.provisional( 'workerMessage', function( e )
   {
 
-    debugger;
     if( e.channel !== 'url' )
     return;
 
@@ -381,7 +377,6 @@ function _formSocketIoSlave()
     self.path = e.data;
     _.assert( _.strIs( self.path ) );
 
-    debugger;
     var SocketIo = require( 'socket.io-client' )/*( 'http://127.0.0.1:30103' )*/;
     var c = self._connection = SocketIo.connect( self.path );
 
