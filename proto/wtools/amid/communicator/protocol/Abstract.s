@@ -126,7 +126,6 @@ function _formStreams()
 
   /* */
 
-  debugger;
   if( self.bufferStreamLike )
   {
 
@@ -181,14 +180,12 @@ function _formStreams()
   self._packetSendAct = function _packetSendAct( data )
   {
     _.assert( arguments.length === 1, 'Expects single argument' );
-    debugger;
     this.primeStreamLike.send( data );
   }
   else if( _.routineIs( this.primeStreamLike.write ) )
   self._packetSendAct = function _packetSendAct( data )
   {
     _.assert( arguments.length === 1, 'Expects single argument' );
-    // debugger;
     // if( !_.bufferNodeIs( data ) && !_.strIs( data ) )
     // data = _.entity.exportJson( data );
     // _.assert( data instanceof U8x );
@@ -197,7 +194,6 @@ function _formStreams()
   }
   else _.assert( 0, 'prime stream does not has "send" neither "write"' );
 
-  debugger;
   if( !self.bufferStreamLike )
   // if( !self._bufferSendAct )
   self._bufferSendAct = self._bufferSendWithTheSameStream;
@@ -298,7 +294,6 @@ function _formTempSend()
 
   self._conConnect.finally( function()
   {
-    debugger;
 
     var i = 0;
 
@@ -428,10 +423,8 @@ function _packetSend( o )
 
   if( o.encoding === 'complex' )
   {
-    // debugger;
     o.data = _.cloneDataSeparatingBuffers({ src : o.data });
     // o.encoding = 'complex';
-    // debugger;
   }
 
   var packet = Object.create( null );
@@ -443,7 +436,6 @@ function _packetSend( o )
 
   packet = self._packetSendBegin( packet );
 
-  debugger;
 
   self._packetSendAct( packet );
 
@@ -622,7 +614,6 @@ function _packetReceive( o )
       o.format = 'json';
     }
 
-    // debugger;
 
     if( o.format === 'json' )
     {

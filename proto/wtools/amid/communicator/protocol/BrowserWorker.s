@@ -46,7 +46,6 @@ function _unform()
   var self = this;
   var com = self.communicator;
 
-  debugger;
 
   // if( com.isMaster )
   // {
@@ -79,7 +78,6 @@ function _formMaster()
   var self = this;
   var com = self.communicator;
 
-  debugger;
 
   // if( !Net )
   // Net = require( 'net' );
@@ -135,7 +133,6 @@ function _formSlave()
   var com = self.communicator;
   var con = new _.Consequence();
 
-  debugger;
 
   // if( !Net )
   // Net = require( 'net' );
@@ -186,7 +183,6 @@ function _packetSendBegin( o )
   var self = this;
   var com = self.communicator;
 
-  debugger;
 
   Parent.prototype._packetSendBegin.call( self, o );
 
@@ -209,7 +205,6 @@ function packetSend( channel, data )
   var self = this;
   var o;
 
-  debugger;
 
   if( arguments.length === 2 )
   o = { channel, data }
@@ -239,7 +234,6 @@ function packetSpecialSend( subchannel, data )
   var self = this;
   var o;
 
-  debugger;
 
   if( arguments.length === 2 )
   o = { subchannel, data }
@@ -270,8 +264,6 @@ function bufferSend( o )
   _.assert( o.data !== undefined );
   _.assert( arguments.length === 1, 'Expects single argument' );
   _.routineOptions( bufferSend, o );
-
-  debugger;
 
   self._bufferSend( o.data );
 

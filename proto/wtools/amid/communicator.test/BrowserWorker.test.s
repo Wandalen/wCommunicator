@@ -34,9 +34,7 @@ function onSuiteBegin()
 {
   var suit = this;
 
-  debugger;
   var worker = new Worker( './BrowserWorker.slave.test.s' );
-  debugger;
 
 }
 

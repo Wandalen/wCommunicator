@@ -170,7 +170,6 @@ function buffer( test )
     url : self.communicationUrl,
   });
 
-  debugger;
   master.form();
 
   master.bufferSend( new F32x([ 7, 8, 9 ]) );
@@ -182,7 +181,6 @@ function buffer( test )
   master.on( 'terminateReceived', function()
   {
     logger.log( master.nameTitle, 'terminateReceived' );
-    debugger;
     con.take( null );
   });
 
@@ -196,7 +194,6 @@ function buffer( test )
   })
   .on( 'packetSpecial', function( e )
   {
-    debugger;
     logger.log( 'packetSpecial', e );
   })
   .on( 'buffer', function( e )
@@ -226,7 +223,6 @@ function buffer( test )
   .on( 'terminateReceived', function()
   {
     logger.log( slave.nameTitle, 'terminateReceived' );
-    debugger;
     con.take( null );
   })
   .on( 'packetSpecial', function( e )

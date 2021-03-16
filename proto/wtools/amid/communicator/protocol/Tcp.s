@@ -48,8 +48,6 @@ function _unform()
   var self = this;
   var com = self.communicator;
 
-  debugger;
-
   if( com.isMaster )
   {
 
