@@ -20,7 +20,7 @@ var Net, Stream;
 //
 
 const _ = _global_.wTools;
-let Parent = _.CommunicatorProtocol.Abstract;
+const Parent = _.CommunicatorProtocol.Abstract;
 const Self = wCommunicatorProtocolTcp;
 function wCommunicatorProtocolTcp( o )
 {
@@ -300,7 +300,7 @@ var Statics =
 // declare
 // --
 
-var Proto =
+const Proto =
 {
 
   init,

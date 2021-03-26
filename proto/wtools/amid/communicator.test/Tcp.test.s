@@ -26,7 +26,7 @@ if( typeof module !== 'undefined' )
 }
 
 const _ = _global_.wTools;
-let Parent = wTests[ 'CommunicatorAbstract' ];
+const Parent = wTests[ 'CommunicatorAbstract' ];
 _.assert( !!Parent );
 
 // --
@@ -37,7 +37,7 @@ _.assert( !!Parent );
 // proto
 // --
 
-var Proto =
+const Proto =
 {
 
   name : 'CommunicatorTcp',

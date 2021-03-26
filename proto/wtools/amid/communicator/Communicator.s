@@ -33,7 +33,7 @@ var Http, Net, SocketIo, Udp;
 */
 
 const _ = _global_.wTools;
-let Parent = null;
+const Parent = null;
 const Self = wCommunicator;
 function wCommunicator( o )
 {
@@ -718,7 +718,7 @@ var Forbids =
 // declare
 // --
 
-var Proto =
+const Proto =
 {
 
   init,

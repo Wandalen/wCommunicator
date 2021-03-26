@@ -20,7 +20,7 @@ var Http, Net, SocketIo, Udp;
 //
 
 const _ = _global_.wTools;
-let Parent = null;
+const Parent = null;
 const Self = wCommunicatorProtocolAbstract;
 function wCommunicatorProtocolAbstract( o )
 {
@@ -835,7 +835,7 @@ var Forbids =
 // declare
 // --
 
-var Proto =
+const Proto =
 {
 
   init,

@@ -23,7 +23,7 @@ if( typeof module !== 'undefined' )
 }
 
 const _ = _global_.wTools;
-let Parent = wTests[ 'CommunicatorAbstract' ];
+const Parent = wTests[ 'CommunicatorAbstract' ];
 _.assert( !!Parent );
 
 // --
@@ -46,7 +46,7 @@ function onSuiteBegin()
 // declare
 // --
 
-var Proto =
+const Proto =
 {
 
   name : 'CommunicatorBrowserWorker',
