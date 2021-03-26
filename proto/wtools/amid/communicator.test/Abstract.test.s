@@ -16,7 +16,7 @@ if( typeof module !== 'undefined' )
 
 }
 
-let _ = _global_.wTools;
+const _ = _global_.wTools;
 
 // --
 // test
@@ -252,7 +252,7 @@ buffer.timeOut = 30000;
 // declare
 // --
 
-let Self =
+const Proto =
 {
 
   name : 'CommunicatorAbstract',
@@ -270,7 +270,7 @@ let Self =
 
 };
 
-Self = wTestSuite( Self );
+const Self = wTestSuite( Proto );
 if( typeof module !== 'undefined' && !module.parent )
 wTester.test( Self.name );
 

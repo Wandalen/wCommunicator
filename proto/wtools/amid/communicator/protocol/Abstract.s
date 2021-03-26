@@ -19,9 +19,9 @@ var Http, Net, SocketIo, Udp;
 
 //
 
-let _ = _global_.wTools;
+const _ = _global_.wTools;
 let Parent = null;
-let Self = wCommunicatorProtocolAbstract;
+const Self = wCommunicatorProtocolAbstract;
 function wCommunicatorProtocolAbstract( o )
 {
   return _.workpiece.construct( Self, this, arguments );

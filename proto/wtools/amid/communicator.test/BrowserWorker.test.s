@@ -15,14 +15,14 @@ if( typeof module !== 'undefined' )
 
   require( './Abstract.test.s' );
 
-  let _ = _global_.wTools;
+  const _ = _global_.wTools;
 
   _.include( 'wTesting' );
   _.include( 'wCommunicator' );
 
 }
 
-let _ = _global_.wTools;
+const _ = _global_.wTools;
 let Parent = wTests[ 'CommunicatorAbstract' ];
 _.assert( !!Parent );
 
@@ -71,7 +71,7 @@ var Proto =
 
 };
 
-let Self = new wTestSuite( Proto ).inherit( Parent );
+const Self = wTestSuite( Proto ).inherit( Parent );
 if( typeof module !== 'undefined' && !module.parent )
 wTester.test( Self.name );
 
