@@ -1,6 +1,6 @@
 {
   "name": "wcommunicator",
-  "version": "0.3.238",
+  "version": "0.3.239",
   "description": "Sketch. Strategy for two points communication. Communicator abstracts details of implementation of communication protocol and provides smooth experience though uniform API. Use the module to make your application more portable and less platform/environment dependent.",
   "author": "Kostiantyn Wandalen <wanalen@01.school>",
   "license": "MIT",
@@ -22,14 +22,14 @@
     "url": "https://github.com/Wandalen/wCommunicator/issues"
   },
   "dependencies": {
-    "wTools": "gamma",
-    "wCopyable": "gamma",
-    "wEventHandler": "gamma",
-    "wConsequence": "gamma"
+    "wTools": "delta",
+    "wCopyable": "delta",
+    "wEventHandler": "delta",
+    "wConsequence": "delta"
   },
   "devDependencies": {
     "eslint": "7.1.0",
-    "wTesting": "gamma",
+    "wTesting": "delta",
     "wcommunicator": "file:."
   },
   "keywords": [
