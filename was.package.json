@@ -5,7 +5,7 @@
   "author" : "Kostiantyn Wandalen <wanalen@01.school>",
   "license" : "MIT",
   "main" : "proto/wtools/amid/communicator/Communicator.s",
-  "files" : [ "proto/wtools/amid/communicator", "proto/wtools/Tools.s", "out" ],
+  "files" : [ "proto/wtools/amid/communicator", "proto/wtools/Tools.s", "out", "proto/node_modules" ],
   "scripts" : { "test" : "wtest .run 'proto/**' rapidity:-3", "docgen" : "wdocgen proto" },
   "repository" :
   {
@@ -23,6 +23,6 @@
     "wEventHandler" : "",
     "wConsequence" : ""
   },
-  "devDependencies" : { "wTesting" : "", "wcommunicator" : "file:.", "eslint" : "7.1.0" },
+  "devDependencies" : { "wTesting" : "", "eslint" : "7.1.0" },
   "keywords" : [ "wTools" ]
 }
