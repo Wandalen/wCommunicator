@@ -4,7 +4,7 @@
   "description" : "Sketch. Strategy for two points communication. Communicator abstracts details of implementation of communication protocol and provides smooth experience though uniform API. Use the module to make your application more portable and less platform/environment dependent.",
   "author" : "Kostiantyn Wandalen <wanalen@01.school>",
   "license" : "MIT",
-  "main" : "proto/wtools/amid/communicator/Communicator.s",
+  "main" : "/pro/module/wCommunicator/proto/node_modules/wcommunicator",
   "files" : [ "proto/wtools/amid/communicator", "proto/wtools/Tools.s", "out", "proto/node_modules" ],
   "scripts" : { "test" : "wtest .run 'proto/**' rapidity:-3", "docgen" : "wdocgen proto" },
   "repository" :
