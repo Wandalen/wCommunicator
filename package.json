@@ -1,38 +1,28 @@
 {
-  "name": "wcommunicator",
-  "version": "0.3.245",
-  "description": "Sketch. Strategy for two points communication. Communicator abstracts details of implementation of communication protocol and provides smooth experience though uniform API. Use the module to make your application more portable and less platform/environment dependent.",
-  "author": "Kostiantyn Wandalen <wanalen@01.school>",
-  "license": "MIT",
-  "main": "proto/wtools/amid/communicator/Communicator.s",
-  "files": [
-    "proto/wtools/amid/communicator",
-    "proto/wtools/Tools.s",
-    "out",
-    "proto/node_modules"
-  ],
-  "scripts": {
-    "test": "wtest .run 'proto/**' rapidity:-3",
-    "docgen": "wdocgen proto"
+  "name" : "wcommunicator",
+  "version" : "0.3.246",
+  "description" : "Sketch. Strategy for two points communication. Communicator abstracts details of implementation of communication protocol and provides smooth experience though uniform API. Use the module to make your application more portable and less platform/environment dependent.",
+  "author" : "Kostiantyn Wandalen <wanalen@01.school>",
+  "license" : "MIT",
+  "main" : "/pro/module/wCommunicator/proto/node_modules/wcommunicator",
+  "files" : [ "proto/wtools/amid/communicator", "proto/wtools/Tools.s", "out", "proto/node_modules" ],
+  "scripts" : { "test" : "wtest .run 'proto/**' rapidity:-3", "docgen" : "wdocgen proto" },
+  "repository" :
+  {
+    "type" : "git",
+    "url" : "https://github.com/Wandalen/wCommunicator.git"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Wandalen/wCommunicator.git"
+  "bugs" :
+  {
+    "url" : "https://github.com/Wandalen/wCommunicator/issues"
   },
-  "bugs": {
-    "url": "https://github.com/Wandalen/wCommunicator/issues"
+  "dependencies" :
+  {
+    "wTools" : "delta",
+    "wCopyable" : "delta",
+    "wEventHandler" : "delta",
+    "wConsequence" : "delta"
   },
-  "dependencies": {
-    "wTools": "delta",
-    "wCopyable": "delta",
-    "wEventHandler": "delta",
-    "wConsequence": "delta"
-  },
-  "devDependencies": {
-    "eslint": "7.1.0",
-    "wTesting": "delta"
-  },
-  "keywords": [
-    "wTools"
-  ]
+  "devDependencies" : { "eslint" : "7.1.0", "wTesting" : "delta" },
+  "keywords" : [ "wTools" ]
 }
