@@ -86,8 +86,8 @@ path:
       raw: compiled
       content: prime
   npm.proto.entry:
-    - /pro/module/wCommunicator/proto/wtools/amid/communicator/Communicator.s
-    - /pro/module/wCommunicator/proto/node_modules/wcommunicator
+    - proto/wtools/amid/communicator/Communicator.s
+    - proto/node_modules/wcommunicator
 reflector:
   reflect.proto:
     inherit: predefined.*
