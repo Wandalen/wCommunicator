@@ -188,18 +188,18 @@ function _formUdpMaster()
 
   stream.on('error', (err) =>
   {
-    console.log(`server error:\n${err.stack}`);
+    console.log( `server error:\n${err.stack}` );
   });
 
   stream.on('message', (msg, rinfo) =>
   {
-    console.log(`server got: ${msg} from ${rinfo.address}:${rinfo.port}`);
+    console.log( `server got: ${msg} from ${rinfo.address}:${rinfo.port}` );
   });
 
   stream.on('listening', () =>
   {
     const address = stream.address();
-    console.log(`server listening ${address.address}:${address.port}`);
+    console.log( `server listening ${address.address}:${address.port}` );
   });
 
   if( _.strIs( self.url ) )
@@ -553,7 +553,7 @@ function bufferSend( o )
 
   _.assert( o.buffer !== undefined );
   _.assert( arguments.length === 1, 'Expects single argument' );
-  _.routineOptions( bufferSend, o );
+  _.routine.options_( bufferSend, o );
 
   protocolProvider._bufferSend( o.buffer );
 

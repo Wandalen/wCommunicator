@@ -369,7 +369,7 @@ function _packetSpecialSend( o )
   _.assert( o.channel !== undefined && o.channel !== null );
   _.assert( o.data !== undefined );
   _.assert( arguments.length === 1 || arguments.length === 2 );
-  _.routineOptions( _packetSpecialSend, o );
+  _.routine.options_( _packetSpecialSend, o );
 
   o.subchannel = 'packetSpecial';
   self._packetSend( o );
@@ -417,7 +417,7 @@ function _packetSend( o )
   _.assert( arguments.length === 1, 'Expects single argument' );
   _.assert( o.channel !== undefined && o.channel !== null );
   _.assert( o.data !== undefined );
-  _.routineOptions( _packetSend, o );
+  _.routine.options_( _packetSend, o );
 
   self._packetCounter += 1;
 
@@ -457,7 +457,7 @@ function _packetSendBegin( o )
 {
   var self = this;
   var com = self.communicator;
-  _.routineOptions( _packetSendBegin, o );
+  _.routine.options_( _packetSendBegin, o );
   _.assert( arguments.length === 1, 'Expects single argument' );
   _.assert( _.strDefined( o.channel ), 'Expects string { channel }, but got', _.entity.strType( o.channel ) );
   return o;
@@ -479,7 +479,7 @@ function _rawReceive( o )
   var self = this;
   var com = self.communicator;
 
-  _.routineOptions( _rawReceive, o );
+  _.routine.options_( _rawReceive, o );
   _.assert( arguments.length === 1, 'Expects single argument' );
   _.assert( _.bufferNodeIs( o.data ) );
 
@@ -523,7 +523,7 @@ function _rawReceivedProceed()
       if( packet )
       if( packet.channel === 'buffer' && packet.subchannel === 'packetSpecial' )
       {
-        self._receivingBuffer = _.mapExtend( null, packet, packet.data );
+        self._receivingBuffer = _.props.extend( null, packet, packet.data );
         delete self._receivingBuffer.data;
         logger.log( 'receiving\n', self._receivingBuffer );
         self._rawRecievedBufferProceed();
@@ -584,7 +584,7 @@ function _bufferReceive( o )
   var self = this;
   var com = self.communicator;
 
-  _.routineOptions( _bufferReceive, o );
+  _.routine.options_( _bufferReceive, o );
 
   com.eventGive({ kind : 'buffer', buffer : o.buffer });
 
@@ -605,7 +605,7 @@ function _packetReceive( o )
   try
   {
 
-    _.routineOptions( _packetReceive, o );
+    _.routine.options_( _packetReceive, o );
     _.assert( arguments.length === 1, 'Expects single argument' );
 
     if( o.format === 'buffer' )
@@ -682,7 +682,7 @@ function _packetSpecialReceive( o )
   var self = this;
   var com = self.communicator;
 
-  _.routineOptions( _packetSpecialReceive, o );
+  _.routine.options_( _packetSpecialReceive, o );
   _.assert( arguments.length === 1, 'Expects single argument' );
   _.assert( o.packet.subchannel === 'packetSpecial', o.packet );
   _.assert( _.strIs( o.packet.subchannel ), o.packet );
@@ -712,7 +712,7 @@ function _errorReceive( o )
 
   com.errors.push( null );
 
-  _.routineOptions( _errorReceive, o );
+  _.routine.options_( _errorReceive, o );
   _.assert( arguments.length === 1, 'Expects single argument' );
 
   var err = _.err( com.nameTitle, ':', 'error\n', o.err );

@@ -209,7 +209,7 @@ function packetSend( channel, data )
   _.assert( o.channel !== undefined && o.channel !== null );
   _.assert( o.data !== undefined );
   _.assert( arguments.length === 1 || arguments.length === 2 );
-  _.routineOptions( packetSend, o );
+  _.routine.options_( packetSend, o );
 
   var packet = { channel : o.channel, data : o.data };
   packet = self._packetSendBegin( packet );
@@ -237,7 +237,7 @@ function packetSpecialSend( subchannel, data )
   _.assert( o.subchannel !== undefined && o.subchannel !== null );
   _.assert( o.data !== undefined );
   _.assert( arguments.length === 1 || arguments.length === 2 );
-  _.routineOptions( packetSpecialSend, o );
+  _.routine.options_( packetSpecialSend, o );
 
   var packet = { subchannel : o.subchannel, data : o.data };
   self.packetSend( 'packetSpecial', packet );
@@ -259,7 +259,7 @@ function bufferSend( o )
 
   _.assert( o.data !== undefined );
   _.assert( arguments.length === 1, 'Expects single argument' );
-  _.routineOptions( bufferSend, o );
+  _.routine.options_( bufferSend, o );
 
   self._bufferSend( o.data );
 
