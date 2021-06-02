@@ -517,7 +517,7 @@ function _rawReceivedProceed()
     {
 
       var packet = packets[ 0 ];
-      _.assert( packet.length );
+      _.assert( packet.length > 0 );
 
       var packet = self._packetReceive({ format : 'buffer', packet });
       if( packet )
