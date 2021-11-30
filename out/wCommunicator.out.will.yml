@@ -3,8 +3,8 @@ root:
   - wCommunicator.out
 consistency:
   ../will.yml: &ref_0
-    hash: 36d53b60a58119b89198c6a952937302
-    size: 6776
+    hash: 551ba9d51af56cb3168a0156b5c6a3b5
+    size: 6784
 module:
   wCommunicator.out:
     about:
@@ -1479,5 +1479,5 @@ module:
           - 'build::npm'
     consistency:
       ../will.yml:
-        hash: 36d53b60a58119b89198c6a952937302
-        size: 6776
+        hash: 551ba9d51af56cb3168a0156b5c6a3b5
+        size: 6784
